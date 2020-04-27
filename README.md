@@ -18,7 +18,7 @@ requirements :
 
 # Forecasting
 
-> watch this : 
+> watching list : 
  - https://www.youtube.com/watch?v=f-Z_4ChUMLQ   |  Car Sale & Test Drive Module
  - https://www.youtube.com/watch?v=-n5KgivN2qI   |  Service Center Module
 
