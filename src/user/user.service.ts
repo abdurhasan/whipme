@@ -2,7 +2,7 @@ import { Injectable, NotFoundException, NotImplementedException, HttpException }
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User } from './user.interface';
-import { AuthRole } from './auth-role.enum';
+import { AuthRole } from '../auth/auth-role.enum';
 import { UpdateUserDto } from './dto/update-user-dto';
 import { DeleteUserDto } from './dto/delete-user-dto';
 

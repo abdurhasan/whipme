@@ -1,5 +1,5 @@
 import { Matches, IsIn, IsArray, IsEmpty, IsOptional, IsEmail } from 'class-validator';
-import { AuthRole } from '../auth-role.enum';
+import { AuthRole } from '../../auth/auth-role.enum';
 
 export class UpdateUserDto {
     @IsEmpty({ message: '_id must be in param' })
