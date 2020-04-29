@@ -1,0 +1,14 @@
+{
+    "server": {
+        "port": 3000,
+        "origin": "same-origin"
+    },
+    "db": {
+        "type": "mongodb",
+        "uri": "mongodb://admin:whipme2020@ds241065.mlab.com:41065/whipme?retryWrites=true&w=majority"
+    },
+    "jwt": {
+        "secret": "myS3cre3t",
+        "expiresIn": 3600
+    }
+}
