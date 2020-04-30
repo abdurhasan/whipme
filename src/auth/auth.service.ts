@@ -6,7 +6,7 @@ import { PayloadAuthDto } from './dto/payload-auth.dto';
 import * as Jwt from 'jsonwebtoken';
 import * as config from 'config';
 import { encrypt, decrypt } from 'src/helper/helper';
-import { TokenAuthDto } from './dto/token-auth.dto';
+import { ResponseAuthDto } from './dto/response-auth.dto';
 import { User } from 'src/user/user.interface';
 import * as moment from 'moment';
 
@@ -19,7 +19,7 @@ export class AuthService {
     private readonly jwtConfig = config.get("jwt")
 
 
-    async signIn(userAuth: SigninAuthDto): Promise<TokenAuthDto> {
+    async signIn(userAuth: SigninAuthDto): Promise<ResponseAuthDto> {
         try {
             const { userName, password } = userAuth
             const userDoc: User = await this.userService.findOneByUsername(userName)
@@ -29,13 +29,15 @@ export class AuthService {
                 throw new UnauthorizedException()
             }
 
-            const token: string = this.createJwtPayload({
+            const serializePayload: PayloadAuthDto = {
+                _id: userDoc._id,
                 userName: userDoc.userName,
                 email: userDoc.email,
                 role: userDoc.role,
                 detail: userDoc.detail
+            }
 
-            })
+            const token: string = this.createJwtPayload(serializePayload)
 
             return { success: true, token, expiresIn: this.jwtConfig.expiresIn }
 

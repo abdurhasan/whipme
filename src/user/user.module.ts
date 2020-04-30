@@ -3,6 +3,7 @@ import { UserController } from './user.controller';
 import { UserService } from './user.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserSchema } from './user.schema';
+import { AuthMiddleware } from 'src/auth/auth.middleware';
 // import { AuthMiddleware } from 'src/auth/auth.service';
 
 @Module({
@@ -13,4 +14,10 @@ import { UserSchema } from './user.schema';
   controllers: [UserController],
   providers: [UserService]
 })
-export class UserModule { }
+export class UserModule { 
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(AuthMiddleware)
+      .forRoutes(UserController)
+
+  }
+}

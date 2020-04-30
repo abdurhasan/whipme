@@ -1,9 +1,10 @@
 import { AuthRole } from '../auth-role.enum';
 
 export interface PayloadAuthDto {
-    userName: string
+    _id: string;
+    userName: string;
     email: string;
     role: AuthRole;
-    detail: object[]
+    detail: object[];
 }
 

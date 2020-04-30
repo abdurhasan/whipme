@@ -1,12 +1,16 @@
 import { AuthRole } from "src/auth/auth-role.enum";
+import { Exclude } from "class-transformer";
 
-export interface User {
-    id: string;
+
+export class User {
+    _id: string;
     userName: string;
     email: string;
+    @Exclude()
     password: string;
     role: AuthRole;
-    isDelete:boolean;
+    isDelete: boolean;
     detail: Array<object>;
+
 }
 

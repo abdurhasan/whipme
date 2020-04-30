@@ -4,8 +4,9 @@ import * as config from 'config';
 import * as helmet from 'helmet';
 
 async function bootstrap() {
-  const serverConfig = config.get('server');
-  const app = await NestFactory.create(AppModule);
+  const serverConfig = config.get('server')
+  const app = await NestFactory.create(AppModule)
+  const bearerToken = require('express-bearer-token')
 
   if (process.env.NODE_ENV === 'development') {
     app.enableCors();
@@ -13,6 +14,8 @@ async function bootstrap() {
     app.enableCors({ origin: serverConfig.origin });
     app.use(helmet())
   }
+
+  app.use(bearerToken())
 
   await app.listen(serverConfig.port);
 }

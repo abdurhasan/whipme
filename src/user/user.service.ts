@@ -53,6 +53,7 @@ export class UserService {
     }
   }
 
+  
   async findOneByUsername(userName): Promise<User> {
     try {
       const user = await this.userModel.findOne({ userName: userName })

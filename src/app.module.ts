@@ -14,6 +14,7 @@ const dbConfig = config.get('db');
   imports: [    
     MongooseModule.forRoot(dbConfig.uri, { useNewUrlParser: true, useUnifiedTopology: true }),
     AuthModule,
+    UserModule
   ],
   controllers: [],
   providers: [],
