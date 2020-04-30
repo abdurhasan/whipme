@@ -20,14 +20,20 @@ export class AuthController {
     constructor(
         private readonly authService: AuthService
              
-
     ) { }
 
+    @Post('/register')
+    async register(
+        @Body() newUser: CreateUserDto
+    ) {
+        
+        return this.authService.register(newUser)
+    }
     @Post('/signIn')
     async signIn(
         @Body() userAuth: SigninAuthDto
     ) {
-        // console.log(this.authService)
+        
         return this.authService.signIn(userAuth)
     }
 

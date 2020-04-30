@@ -1,10 +1,11 @@
-import { Injectable, NotFoundException, NotImplementedException, HttpException } from '@nestjs/common';
+import { Injectable, NotFoundException, NotImplementedException, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User } from './user.interface';
 import { AuthRole } from '../auth/auth-role.enum';
 import { UpdateUserDto } from './dto/update-user-dto';
 import { DeleteUserDto } from './dto/delete-user-dto';
+import { responseError } from 'src/helper/helper';
 
 
 
@@ -15,12 +16,12 @@ export class UserService {
   ) { }
 
   async createUser(newUser): Promise<User> {
-    const _newUser = this.userModel({ ...newUser })
+    const _newUser = this.userModel(newUser)
     try {
       await _newUser.save()
       return _newUser
     } catch (error) {
-      throw new HttpException(error.message, 422)
+      return responseError(error.message, HttpStatus.NOT_IMPLEMENTED)
     }
   }
 
@@ -30,24 +31,36 @@ export class UserService {
       const users = await this.userModel.find({})
       return users
     } catch (error) {
-      throw new HttpException(error.message, 501)
+      return responseError(error.message, HttpStatus.NOT_IMPLEMENTED)
     }
   }
 
 
 
-  async updateUser(_id: string, userUpdate: UpdateUserDto | DeleteUserDto) : Promise<User> {
-    try {      
-      const user = await this.userModel.findOneAndUpdate({_id},userUpdate)
-      if(!user){
-        throw new Error(`User id ${_id} is not found`)
-      } 
+  async updateUser(_id: string, userUpdate: UpdateUserDto | DeleteUserDto): Promise<User> {
+    try {
+
+      const user = await this.userModel.findById(_id)
+      for (const key in userUpdate) {
+        user[key] = userUpdate[key]
+      }
+
+      await user.save()
       return user
 
     } catch (error) {
-      throw new HttpException(error.message, 422)
+      return responseError(error.message, HttpStatus.UNPROCESSABLE_ENTITY)
     }
   }
-    
-    
+
+  async findOneByUsername(userName): Promise<User> {
+    try {
+      const user = await this.userModel.findOne({ userName: userName })
+      return user
+    } catch (error) {
+      throw error
+    }
+  }
+
+
 }

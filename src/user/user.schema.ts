@@ -1,6 +1,7 @@
 import * as mongoose from 'mongoose';
 import { AuthRole } from '../auth/auth-role.enum';
-import * as bcrypt from 'bcrypt';
+import { encrypt } from 'src/helper/helper';
+
 
 export const UserSchema = new mongoose.Schema({
     email: {
@@ -30,28 +31,23 @@ export const UserSchema = new mongoose.Schema({
         type: Array,
         default: []
     }
-});
+}, { timestamps: true });
 
 UserSchema.pre('save', function (next) {
-    const user = this;
-    if (!user.isModified('password')) return next();
-    bcrypt.genSalt(10, (err, salt) => {
-        if (err) return next(err);
-        bcrypt.hash(user.password, salt, (err, hash) => {
-            if (err) return next(err);
-            user.password = hash; next();
+    let { password, role } = this
 
-        });
+    try {
+        if (password) {
+            this.password = encrypt(password)
 
-    });
+        }
+        if (role) {
+            this.role = encrypt(role)
+        }
+        return next()
+    } catch (error) {
+        return next(error)
+    }
 
 });
 
-UserSchema.methods.checkPassword = function (attempt, callback) {
-    let user = this;
-    bcrypt.compare(attempt, user.password, (err, isMatch) => {
-        if (err) return callback(err);
-        callback(null, isMatch);
-    });
-
-};

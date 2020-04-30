@@ -8,7 +8,10 @@
         "uri": "mongodb://admin:whipme2020@ds241065.mlab.com:41065/whipme?retryWrites=true&w=majority"
     },
     "jwt": {
-        "secret" : "myS3cre3t",
+        "secret": "myS3cre3t",
         "expiresIn": 3600
+    },
+    "encryption": {
+        "secret": "myS3cre3t"
     }
 }
