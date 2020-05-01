@@ -5,4 +5,5 @@ export interface Car {
     year: number;
     type: string;
     color:string;
+    isDelete: boolean;
 }

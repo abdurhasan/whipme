@@ -21,5 +21,9 @@ export const CarSchema = new mongoose.Schema({
     color: {
         type: String,
         required: true
+    },
+    isDelete: {
+        type: Boolean,
+        required: true
     }
 }, { timestamps: true });

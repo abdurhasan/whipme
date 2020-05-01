@@ -1,11 +1,11 @@
-import { Injectable, NotFoundException, NotImplementedException, HttpException, HttpStatus } from '@nestjs/common';
+import { Injectable, HttpStatus } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User } from './user.interface';
 import { UpdateUserDto } from './dto/update-user-dto';
-import { DeleteUserDto } from './dto/delete-user-dto';
 import { responseError } from 'src/helper/response-helper';
 import { CreateUserDto } from './dto/create-user-dto';
+import { DeleteDto } from 'src/helper/delete-dto-helper';
 
 
 
@@ -37,7 +37,7 @@ export class UserService {
 
 
 
-  async updateUser(_id: string, userUpdate: UpdateUserDto | DeleteUserDto): Promise<User> {
+  async updateUser(_id: string, userUpdate: UpdateUserDto | DeleteDto): Promise<User> {
     try {
 
       const user = await this.userModel.findById(_id)

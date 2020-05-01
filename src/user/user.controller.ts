@@ -5,22 +5,24 @@ import {
     Get,
     Param,
     Patch,
-    Delete
+    Delete,
+    UsePipes,
+    ValidationPipe
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './user.interface';
 import { CreateUserDto } from './dto/create-user-dto'
 import { UpdateUserDto } from './dto/update-user-dto';
 import { AuthRoles } from 'src/auth/auth.guard';
-import { DeleteUserDto } from './dto/delete-user-dto';
 import { IsNotEmptyPipe } from 'src/helper/pipe-helper';
+import { DeleteDto } from 'src/helper/delete-dto-helper';
 
 
 
 
 
 @Controller('user')
-
+@UsePipes(ValidationPipe)
 export class UserController {
     constructor(private readonly userService: UserService) { }
 
@@ -41,13 +43,13 @@ export class UserController {
     async updateUser(
         @Param('id') id: string,
         @Body(IsNotEmptyPipe) userUpdate: UpdateUserDto
-    ): Promise<any> {
+    ): Promise<User> {
         return this.userService.updateUser(id, userUpdate)
     }
 
     @Delete(':id')
     async deleteUser(@Param('id') id: string) {
-        const softDelete: DeleteUserDto = { isDelete: true }
+        const softDelete: DeleteDto = { isDelete: true }
         return this.userService.updateUser(id, softDelete);
 
     }

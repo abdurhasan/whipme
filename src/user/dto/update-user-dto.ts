@@ -2,7 +2,7 @@ import { Matches, IsIn, IsArray, IsEmpty, IsOptional, IsEmail, IsNotEmpty } from
 import { AuthRole } from '../../auth/auth-role.enum';
 
 export class UpdateUserDto {
-    @IsEmpty({ message: '_id must be in param' })
+    @IsEmpty({ message: 'you cannot change the id' })
     _id: string;
     @IsEmpty()
     userName: string;
