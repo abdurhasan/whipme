@@ -1,9 +1,8 @@
 export interface CarInterface {
-    _id:string;
-    year : string;  //
+    _id: string;
     brand: string;
     model: string;
-    type:string;
-    fuel:string;
-    color:string
+    year: number;
+    type: string;
+    color:string;
 }

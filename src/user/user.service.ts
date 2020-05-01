@@ -6,6 +6,7 @@ import { AuthRole } from '../auth/auth-role.enum';
 import { UpdateUserDto } from './dto/update-user-dto';
 import { DeleteUserDto } from './dto/delete-user-dto';
 import { responseError } from 'src/helper/helper';
+import { CreateUserDto } from './dto/create-user-dto';
 
 
 
@@ -15,7 +16,7 @@ export class UserService {
     @InjectModel('User') private readonly userModel: Model<User>,
   ) { }
 
-  async createUser(newUser): Promise<User> {
+  async createUser(newUser: CreateUserDto): Promise<User> {
     const _newUser = this.userModel(newUser)
     try {
       await _newUser.save()
@@ -53,8 +54,8 @@ export class UserService {
     }
   }
 
-  
-  async findOneByUsername(userName): Promise<User> {
+
+  async findOneByUsername(userName:string): Promise<User> {
     try {
       const user = await this.userModel.findOne({ userName: userName })
       return user

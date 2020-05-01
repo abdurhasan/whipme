@@ -20,7 +20,7 @@ import { CreateUserDto } from './dto/create-user-dto'
 import { UpdateUserDto } from './dto/update-user-dto';
 import * as isEmpty from 'is-empty'
 import { AuthRoles } from 'src/auth/auth.guard';
-// import { DeleteUserDto } from './dto/delete-user-dto';
+import { DeleteUserDto } from './dto/delete-user-dto';
 
 
 
@@ -56,8 +56,9 @@ export class UserController {
     }
 
     @Delete(':id')
-    async deleteUser(@Param('id') id: string) {        
-        return this.userService.updateUser(id, { isDelete: true });
+    async deleteUser(@Param('id') id: string) {
+        const softDelete: DeleteUserDto = { isDelete: true }
+        return this.userService.updateUser(id, softDelete);
 
     }
 }

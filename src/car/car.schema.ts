@@ -1,35 +1,25 @@
 import * as mongoose from 'mongoose';
-import { AuthRole } from '../auth/auth-role.enum';
 
 
-
-export const UserSchema = new mongoose.Schema({
-    email: {
-        type: String,
-        unique: true,
-        required: true
-    },
-    userName: {
-        type: String,
-        unique: true,
-        required: true
-    },
-    password: {
+export const CarSchema = new mongoose.Schema({
+    type: {
         type: String,
         required: true
     },
-    role: {
+    brand: {
         type: String,
-        enum: Object.values(AuthRole),
         required: true
     },
-    isDelete: {
-        type: Boolean,
-        default: false
+    model: {
+        type: String,
+        required: true
     },
-    detail: {
-        type: Array,
-        default: []
+    year: {
+        type: Number,
+        required: true
+    },
+    color: {
+        type: String,
+        required: true
     }
 }, { timestamps: true });
-
