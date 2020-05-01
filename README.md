@@ -1,4 +1,5 @@
-Design and develop a software which customers are able to register their vehicle by numberplate, assign alternate drivers and track their service history.
+Design and develop a software which customers are able to register their vehicle by numberplate, 
+assign alternate drivers and track their service history.
 alternate drivers are not vehicle owners and should be able to request vehicle service on branch.
 customers and alternate drivers should be able to book on certain dates displayed on the calendar, each day has 10 available slots to book and 10 technicians to assign on each vehicle. each branch has its own calendar, technicians and working day/hours.
 

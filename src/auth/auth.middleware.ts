@@ -11,7 +11,7 @@ export class AuthMiddleware implements NestMiddleware {
     constructor() { }
 
     async use(req: any, res: any, next: any) {
-        let { token } = req
+        const { token } = req
         const jwtConfig = config.get("jwt")
 
         try {
