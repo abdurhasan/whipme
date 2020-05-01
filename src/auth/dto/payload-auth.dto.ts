@@ -6,5 +6,7 @@ export interface PayloadAuthDto {
     email: string;
     role: AuthRole;
     detail: object[];
+    exp?: number;
+    iat?: number;
 }
 

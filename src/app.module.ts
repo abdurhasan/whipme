@@ -1,22 +1,25 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { AuthService } from './auth/auth.service';
 import * as config from 'config';
-import { AuthController } from './auth/auth.controller';
-import { UserService } from './user/user.service';
-import { UserController } from './user/user.controller';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { BookingModule } from './booking/booking.module';
+import { APP_GUARD } from '@nestjs/core';
+import { RolesGuard } from './auth/auth.guard';
+
 
 const dbConfig = config.get('db');
 
 @Module({
-  imports: [    
+  imports: [
     MongooseModule.forRoot(dbConfig.uri, { useNewUrlParser: true, useUnifiedTopology: true }),
     AuthModule,
-    UserModule
+    UserModule,
+    BookingModule
   ],
   controllers: [],
-  providers: [],
+  providers: [   
+    {provide:APP_GUARD, useClass: RolesGuard} 
+  ],
 })
 export class AppModule { }

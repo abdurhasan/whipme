@@ -2,6 +2,7 @@ import { HttpException, Injectable, NestMiddleware, UnauthorizedException } from
 import * as Jwt from 'jsonwebtoken';
 import * as config from 'config';
 import { decrypt } from 'src/helper/helper';
+import { PayloadAuthDto } from './dto/payload-auth.dto';
 
 
 
@@ -24,8 +25,10 @@ export class AuthMiddleware implements NestMiddleware {
             }
 
             decodedToken.role = decrypt(decodedToken.role)
-            token = decodedToken
-            console.log(token)
+            const user : PayloadAuthDto = decodedToken 
+
+            req.user = user
+
 
             next()
 
@@ -33,11 +36,6 @@ export class AuthMiddleware implements NestMiddleware {
             throw new HttpException(error.message, 401)
         }
 
-        // try {
 
-        //     next();
-        // } catch (e) {
-        //     throw new UnauthorizedException(e.message)
-        // }
     }
 }
