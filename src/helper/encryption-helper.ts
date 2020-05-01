@@ -1,6 +1,5 @@
 import * as crypto from 'crypto'
 import * as config from 'config'
-import { HttpException, UnprocessableEntityException } from '@nestjs/common'
 
 const encryptionConfig = config.get('encryption')
 
@@ -17,13 +16,4 @@ export const decrypt = text => {
     return dec;
 }
 
-
-export const responseError = (message: string, code: number = 422) => {
-
-    return Promise.reject(new HttpException({ success: false, message }, code));
-};
-
-// export const response = (data: any = null, code: number = 200) => {    
-//     return Promise.resolve({ success: true, data, code })
-// };
 

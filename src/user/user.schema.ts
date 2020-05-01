@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 import { AuthRole } from '../auth/auth-role.enum';
-import { encrypt } from 'src/helper/helper';
+import { encrypt } from 'src/helper/encryption-helper';
 
 
 export const UserSchema = new mongoose.Schema({

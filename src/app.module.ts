@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { BookingModule } from './booking/booking.module';
 import { APP_GUARD } from '@nestjs/core';
 import { RolesGuard } from './auth/auth.guard';
+import { CarModule } from './car/car.module';
 
 
 const dbConfig = config.get('db');
@@ -15,7 +16,8 @@ const dbConfig = config.get('db');
     MongooseModule.forRoot(dbConfig.uri, { useNewUrlParser: true, useUnifiedTopology: true }),
     AuthModule,
     UserModule,
-    BookingModule
+    BookingModule,
+    CarModule
   ],
   controllers: [],
   providers: [   

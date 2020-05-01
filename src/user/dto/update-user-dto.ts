@@ -1,4 +1,4 @@
-import { Matches, IsIn, IsArray, IsEmpty, IsOptional, IsEmail } from 'class-validator';
+import { Matches, IsIn, IsArray, IsEmpty, IsOptional, IsEmail, IsNotEmpty } from 'class-validator';
 import { AuthRole } from '../../auth/auth-role.enum';
 
 export class UpdateUserDto {
@@ -14,9 +14,9 @@ export class UpdateUserDto {
         /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
         { message: 'password too weak' },
     )
-    password: string;
-    @IsOptional()
+    password: string;    
     @IsIn(Object.values(AuthRole))
+    @IsOptional()
     role: string;        
     @IsArray()
     detail: Array<object>;

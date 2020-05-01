@@ -2,10 +2,9 @@ import { Injectable, NotFoundException, NotImplementedException, HttpException, 
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User } from './user.interface';
-import { AuthRole } from '../auth/auth-role.enum';
 import { UpdateUserDto } from './dto/update-user-dto';
 import { DeleteUserDto } from './dto/delete-user-dto';
-import { responseError } from 'src/helper/helper';
+import { responseError } from 'src/helper/response-helper';
 import { CreateUserDto } from './dto/create-user-dto';
 
 
@@ -55,12 +54,12 @@ export class UserService {
   }
 
 
-  async findOneByUsername(userName:string): Promise<User> {
+  async findOneByUsername(userName: string): Promise<User> {
     try {
       const user = await this.userModel.findOne({ userName: userName })
       return user
     } catch (error) {
-      throw error
+      return responseError(error.message, HttpStatus.UNPROCESSABLE_ENTITY)
     }
   }
 

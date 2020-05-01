@@ -1,7 +1,7 @@
 import { HttpException, Injectable, NestMiddleware, UnauthorizedException } from '@nestjs/common';
 import * as Jwt from 'jsonwebtoken';
 import * as config from 'config';
-import { decrypt } from 'src/helper/helper';
+import { decrypt } from 'src/helper/encryption-helper';
 import { PayloadAuthDto } from './dto/payload-auth.dto';
 
 

@@ -5,7 +5,7 @@ import { UserService } from 'src/user/user.service';
 import { PayloadAuthDto } from './dto/payload-auth.dto';
 import * as Jwt from 'jsonwebtoken';
 import * as config from 'config';
-import { encrypt, decrypt } from 'src/helper/helper';
+import { encrypt, decrypt } from 'src/helper/encryption-helper';
 import { ResponseAuthDto } from './dto/response-auth.dto';
 import { User } from 'src/user/user.interface';
 import * as moment from 'moment';

@@ -5,22 +5,15 @@ import {
     Get,
     Param,
     Patch,
-    Delete,
-    UsePipes,
-    ValidationPipe,
-    ParseIntPipe,
-    Query,
-    HttpException,
-    HttpStatus,
-    UseGuards,
+    Delete
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './user.interface';
 import { CreateUserDto } from './dto/create-user-dto'
 import { UpdateUserDto } from './dto/update-user-dto';
-import * as isEmpty from 'is-empty'
 import { AuthRoles } from 'src/auth/auth.guard';
 import { DeleteUserDto } from './dto/delete-user-dto';
+import { IsNotEmptyPipe } from 'src/helper/pipe-helper';
 
 
 
@@ -47,11 +40,8 @@ export class UserController {
     @Patch(':id')
     async updateUser(
         @Param('id') id: string,
-        @Body() userUpdate: UpdateUserDto
+        @Body(IsNotEmptyPipe) userUpdate: UpdateUserDto
     ): Promise<any> {
-        if (isEmpty(userUpdate)) {
-            return 'Updated nothing'
-        }
         return this.userService.updateUser(id, userUpdate)
     }
 
