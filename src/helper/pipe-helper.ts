@@ -13,6 +13,26 @@ export class IsNotEmptyPipe implements PipeTransform {
 
 }
 
+export const SlugStringList: string[] = ['numberPlate']
+
+
+
+export class SlugString implements PipeTransform {
+
+    transform(value: object) {
+        for (const key in value) {
+            if (SlugStringList.includes(key)) {
+                console.log(value[key])
+                value[key] = value[key].trim().toUpperCase().replace(/[ ,.]/g, "-")
+            }
+        }
+
+
+        return value
+    }
+
+}
+
 
 
 export const CurrentUser = createParamDecorator(
@@ -21,10 +41,3 @@ export const CurrentUser = createParamDecorator(
         return request.user;
     },
 );
-
-export class FilterPipe implements PipeTransform {
-
-    transform(value: any) {
-
-    }
-}

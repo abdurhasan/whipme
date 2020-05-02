@@ -20,11 +20,13 @@ export class UserService {
   async assignCar(currentUser: PayloadAuthDto, userCarOwned: AssignCarDto) {
 
     try {
+      return true
+      // validate duplicated numberPlate
 
-      return await this.userModel.update(
-        { _id: currentUser._id },
-        { $push: { cars: userCarOwned } }
-      );
+      // return await this.userModel.findOne(
+      //   { _id: currentUser._id , 'cars.numberPlate' : { $ne: userCarOwned.numberPlate } },
+      //   { $push: { cars: userCarOwned } }
+      // ).select("cars -_id");
 
     } catch (error) {
       return responseError(error.message, HttpStatus.UNPROCESSABLE_ENTITY)
