@@ -1,4 +1,4 @@
-import { PipeTransform, BadRequestException } from '@nestjs/common';
+import { PipeTransform, BadRequestException, createParamDecorator, ExecutionContext } from '@nestjs/common';
 import * as IsEmpty from 'is-empty'
 
 export class IsNotEmptyPipe implements PipeTransform {
@@ -13,6 +13,14 @@ export class IsNotEmptyPipe implements PipeTransform {
 
 }
 
+
+
+export const CurrentUser = createParamDecorator(
+    (data: unknown, ctx: ExecutionContext) => {
+        const request = ctx.switchToHttp().getRequest();
+        return request.user;
+    },
+);
 
 export class FilterPipe implements PipeTransform {
 

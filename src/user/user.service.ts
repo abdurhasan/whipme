@@ -6,6 +6,8 @@ import { UpdateUserDto } from './dto/update-user-dto';
 import { responseError } from 'src/helper/response-helper';
 import { CreateUserDto } from './dto/create-user-dto';
 import { DeleteDto } from 'src/helper/delete-dto-helper';
+import { AssignCarDto } from './dto/assign-car-dto';
+import { PayloadAuthDto } from 'src/auth/dto/payload-auth.dto';
 
 
 
@@ -15,8 +17,21 @@ export class UserService {
     @InjectModel('User') private readonly userModel: Model<User>,
   ) { }
 
+  async assignCar(currentUser: PayloadAuthDto, userCarOwned: AssignCarDto) {
+
+    try {
+
+      return await this.userModel.update(
+        { _id: currentUser._id },
+        { $push: { cars: userCarOwned } }        
+      );
+      
+    } catch (error) {
+      return responseError(error.message, HttpStatus.UNPROCESSABLE_ENTITY)
+    }
+  }
   async createUser(newUser: CreateUserDto): Promise<User> {
-    const _newUser = new this.userModel(newUser)    
+    const _newUser = new this.userModel(newUser)
     try {
       await _newUser.save()
       return _newUser

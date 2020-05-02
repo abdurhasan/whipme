@@ -7,16 +7,17 @@ import {
     Patch,
     Delete,
     UsePipes,
-    ValidationPipe
+    ValidationPipe,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './user.interface';
-// import { CreateUserDto } from './dto/create-user-dto'
 import { UpdateUserDto } from './dto/update-user-dto';
 import { AuthRoles } from 'src/auth/auth.guard';
 import { IsNotEmptyPipe } from 'src/helper/pipe-helper';
 import { DeleteDto } from 'src/helper/delete-dto-helper';
-
+import { AssignCarDto } from './dto/assign-car-dto';
+import { CurrentUser } from '../helper/pipe-helper'
+import { PayloadAuthDto } from 'src/auth/dto/payload-auth.dto';
 
 
 
@@ -28,11 +29,12 @@ export class UserController {
 
 
     @Post('/assignCar')
-    @AuthRoles(['CAR_OWNER','ADMIN'])
+    @AuthRoles(['CAR_OWNER', 'ADMIN'])
     async assignCar(
-        @Body() newCar
+        @Body() userCarOwned: AssignCarDto,
+        @CurrentUser() currentUser: PayloadAuthDto
     ) {
-        return newCar
+        return this.userService.assignCar(currentUser, userCarOwned)
     }
 
     // @Post()  // : internal usage , use Auth/signUp instead
