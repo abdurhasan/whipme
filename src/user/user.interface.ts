@@ -1,4 +1,5 @@
 import { AuthRole } from "src/auth/auth-role.enum";
+import { UserCarOwned } from "./user-cars.interface";
 
 export class User {
     _id: string;
@@ -8,6 +9,6 @@ export class User {
     role: AuthRole;
     isDelete: boolean;
     detail: Array<object>;
-
+    cars: UserCarOwned[];
 }
 

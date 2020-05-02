@@ -35,7 +35,12 @@ export const UserSchema = new mongoose.Schema({
     detail: {
         type: Array,
         default: []
-    }
+    },
+    cars: [{
+        numberPlate: String,
+        carId: mongoose.Types.ObjectId,
+        color: String
+    }]
 }, { timestamps: true });
 
 UserSchema.pre('save', function (next) {
