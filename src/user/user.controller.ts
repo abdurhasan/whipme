@@ -10,7 +10,7 @@ import {
     ValidationPipe,
 } from '@nestjs/common';
 import { UserService } from './user.service';
-import { User } from './user.interface';
+import { User } from './interface/user.interface';
 import { UpdateUserDto } from './dto/update-user-dto';
 import { AuthRoles } from 'src/auth/auth.guard';
 import { IsNotEmptyPipe, SlugString } from 'src/helper/pipe-helper';

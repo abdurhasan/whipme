@@ -32,14 +32,15 @@ export const UserSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    detail: {
-        type: Array,
-        default: []
-    },
+    detail: [{
+        field: String,
+        type: String,
+        value: String
+    }],
     cars: [{
         numberPlate: {
-            type : String,
-            unique : true
+            type: String,
+            unique: true
         },
         carId: mongoose.Types.ObjectId,
         color: String

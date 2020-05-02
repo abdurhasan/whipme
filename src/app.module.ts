@@ -7,6 +7,7 @@ import { BookingModule } from './booking/booking.module';
 import { APP_GUARD } from '@nestjs/core';
 import { RolesGuard } from './auth/auth.guard';
 import { CarModule } from './car/car.module';
+import { BranchModule } from './branch/branch.module';
 
 
 const dbConfig = config.get('db');
@@ -17,7 +18,8 @@ const dbConfig = config.get('db');
     AuthModule,
     UserModule,
     BookingModule,
-    CarModule
+    CarModule,
+    BranchModule
   ],
   controllers: [],
   providers: [   
