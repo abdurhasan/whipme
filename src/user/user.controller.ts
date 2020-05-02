@@ -26,12 +26,12 @@ import { DeleteDto } from 'src/helper/delete-dto-helper';
 export class UserController {
     constructor(private readonly userService: UserService) { }
 
-    @Post()
-    async createUser(
-        @Body() newUser: CreateUserDto
-    ): Promise<User> {
-        return this.userService.createUser(newUser)
-    }
+    // @Post()  // : internal usage
+    // async createUser(
+    //     @Body() newUser: CreateUserDto
+    // ): Promise<User> {
+    //     return this.userService.createUser(newUser)
+    // }
 
     @Get()
     @AuthRoles(['CAR_OWNER'])

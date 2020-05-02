@@ -29,7 +29,7 @@ export class CarService {
         }
     }
     async createCar(newCar: CreateCarDto): Promise<Car> {
-        const _newCar = this.carModel(newCar)
+        const _newCar = new this.carModel(newCar)
         try {
             await _newCar.save()
             return _newCar

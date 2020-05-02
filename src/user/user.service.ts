@@ -16,7 +16,7 @@ export class UserService {
   ) { }
 
   async createUser(newUser: CreateUserDto): Promise<User> {
-    const _newUser = this.userModel(newUser)
+    const _newUser = new this.userModel(newUser)    
     try {
       await _newUser.save()
       return _newUser
