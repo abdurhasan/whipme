@@ -2,12 +2,11 @@ import { Injectable, HttpStatus } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Car } from './car.interface';
-import { responseError } from 'src/helper/response-helper';
 import { CreateCarDto } from './dto/create-car.dto'
 import { UpdateCarDto } from './dto/update-car.dto';
 import { DeleteDto } from 'src/helper/delete-dto-helper';
 import { GetUsersFilterDto } from 'src/user/dto/filter-user.dto';
-import * as mongoose from 'mongoose';
+
 
 
 @Injectable()
@@ -17,50 +16,34 @@ export class CarService {
     ) { }
 
     async getCars(userFilter: GetUsersFilterDto): Promise<Car[]> {
-        try {
-            const select: string = userFilter.select ? userFilter.select.replace(/[ ,.]/g, " ") : ''
-            if (select) delete userFilter.select
+        const select: string = userFilter.select ? userFilter.select.replace(/[ ,.]/g, " ") : ''
+        if (select) delete userFilter.select
 
-            const cars = await this.carModel.find(userFilter).select(select)
-            return cars
-        } catch (error) {
-            return responseError(error.message, HttpStatus.NOT_IMPLEMENTED)
-
-        }
+        const cars = await this.carModel.find(userFilter).select(select)
+        return cars
     }
     async getCarById(carId: string): Promise<Car> {
-        try {
-
-            return await this.carModel.findById(carId)
-
-        } catch (error) {
-            return responseError(error.message, HttpStatus.UNPROCESSABLE_ENTITY)
-
-        }
+        const carById = await this.carModel.findById(carId)
+        return carById
     }
     async createCar(newCar: CreateCarDto): Promise<Car> {
-        const _newCar = new this.carModel(newCar)
-        try {
-            await _newCar.save()
-            return _newCar
-        } catch (error) {
-            return responseError(error.message, HttpStatus.NOT_IMPLEMENTED)
-        }
+        const createdCar = new this.carModel(newCar)
+        await createdCar.save()
+        return createdCar
     }
     async updateCar(_id: string, carUpdate: UpdateCarDto | DeleteDto): Promise<Car> {
-        try {
+        const car = await this.carModel.findById(_id)
 
-            const car = await this.carModel.findById(_id)
-            for (const key in carUpdate) {
-                car[key] = carUpdate[key]
-            }
-
-            await car.save()
-            return car
-
-        } catch (error) {
-            return responseError(error.message, HttpStatus.UNPROCESSABLE_ENTITY)
+        if (!car) {
+            throw new Error(`Car with id : ${_id} is not found`)
         }
+
+        for (const key in carUpdate) {
+            car[key] = carUpdate[key]
+        }
+
+        await car.save()
+        return car
     }
 
 

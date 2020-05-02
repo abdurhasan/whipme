@@ -1,7 +1,5 @@
-export interface ResponseAuthDto {
-    success : boolean;
+export interface ResponseAuthDto {    
     token: string;
     expiresIn : number;
-
 }
 

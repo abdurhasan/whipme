@@ -7,11 +7,13 @@ import {
     Patch,
     Delete,
     UsePipes,
-    ValidationPipe
+    ValidationPipe,
+    HttpStatus
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { SigninAuthDto } from './dto/signin-auth.dto';
 import { CreateUserDto } from 'src/user/dto/create-user-dto';
+import { responseSuccess, responseError } from 'src/helper/response-helper';
 
 
 @UsePipes(ValidationPipe)
@@ -19,22 +21,34 @@ import { CreateUserDto } from 'src/user/dto/create-user-dto';
 export class AuthController {
     constructor(
         private readonly authService: AuthService
-             
+
     ) { }
 
     @Post('/register')
     async register(
         @Body() newUser: CreateUserDto
     ) {
-        
-        return this.authService.register(newUser)
+        try {
+            const registeredUser = await this.authService.register(newUser)
+            return responseSuccess(registeredUser)
+        } catch (error) {
+            return responseError(error.message)
+        }
+
     }
     @Post('/signIn')
     async signIn(
         @Body() userAuth: SigninAuthDto
     ) {
-        
-        return this.authService.signIn(userAuth)
+        try {
+            const signedIdUser = await this.authService.signIn(userAuth)
+            return responseSuccess(signedIdUser)
+        } catch (error) {
+            return responseError(error.message)
+        }
+
+
+
     }
 
 }

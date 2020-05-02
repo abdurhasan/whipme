@@ -1,14 +1,13 @@
-import { Injectable, HttpStatus } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User } from './user.interface';
 import { UpdateUserDto } from './dto/update-user-dto';
-import { responseError } from 'src/helper/response-helper';
 import { CreateUserDto } from './dto/create-user-dto';
 import { DeleteDto } from 'src/helper/delete-dto-helper';
 import { AssignCarDto } from './dto/assign-car-dto';
 import { PayloadAuthDto } from 'src/auth/dto/payload-auth.dto';
-// import { response } from '../helper/response-helper';
+
 
 
 
@@ -20,86 +19,65 @@ export class UserService {
 
   async assignCar(currentUser: PayloadAuthDto, userCarOwned: AssignCarDto) {
     const numberPlate: string = userCarOwned.numberPlate
-    try {
 
-      // validate duplicated numberPlate      
-      const findNumberPlate = await this.userModel.find({ "cars.numberPlate": numberPlate }).select('cars -_id')
-      if (findNumberPlate.length > 0) {
+    const findNumberPlate = await this.userModel.find({ "cars.numberPlate": numberPlate }).select('cars -_id')  // validate duplicated numberPlate      
 
-        throw new Error(`Car with number plate : ${numberPlate} has been registered`)
-      }
+    if (findNumberPlate.length > 0) {
 
-      await this.userModel.updateOne(
-        { _id: currentUser._id },
-        {
-          $push: { cars: userCarOwned }
-        })
-
-
-      return userCarOwned
-
-
-    } catch (error) {
-      return responseError(error.message, HttpStatus.UNPROCESSABLE_ENTITY)
+      throw new Error(`Car with number plate : ${numberPlate} has been registered`)
     }
+
+    const updatedUser = await this.userModel.findOneAndUpdate(
+      { _id: currentUser._id },
+      {
+        $push: { cars: userCarOwned }
+      })
+
+    if (!updatedUser) {
+      throw new Error(`Failed to assign new car`)
+    }
+
+    return updatedUser
   }
 
   async getUserById(userId: string): Promise<User> {
-    try {
-
-      return await this.userModel.findById(userId)
-
-    } catch (error) {
-      return responseError(error.message, HttpStatus.UNPROCESSABLE_ENTITY)
-
-    }
+    const userById: User = await this.userModel.findById(userId)
+    return userById
   }
   async createUser(newUser: CreateUserDto): Promise<User> {
-    const _newUser = new this.userModel(newUser)
-    try {
-      await _newUser.save()
-      return _newUser
-    } catch (error) {
-      return responseError(error.message, HttpStatus.NOT_IMPLEMENTED)
-    }
+    const createdUser = new this.userModel(newUser)
+    await createdUser.save()
+    return createdUser
   }
 
 
   async getUsers(): Promise<User[]> {
-    try {
-      const users = await this.userModel.find({})
-      return users
-    } catch (error) {
-      return responseError(error.message, HttpStatus.NOT_IMPLEMENTED)
-    }
+    const users = await this.userModel.find({})
+    return users
   }
 
 
 
   async updateUser(_id: string, userUpdate: UpdateUserDto | DeleteDto): Promise<User> {
-    try {
+    const user = await this.userModel.findById(_id)
 
-      const user = await this.userModel.findById(_id)
-      for (const key in userUpdate) {
-        user[key] = userUpdate[key]
-      }
-
-      await user.save()
-      return user
-
-    } catch (error) {
-      return responseError(error.message, HttpStatus.UNPROCESSABLE_ENTITY)
+    if (!user) {
+      throw new Error('User is not found')
     }
+
+    for (const key in userUpdate) {
+      user[key] = userUpdate[key]
+    }
+
+    await user.save()
+
+    return user
   }
 
 
   async findOneByUsername(userName: string): Promise<User> {
-    try {
-      const user = await this.userModel.findOne({ userName: userName })
-      return user
-    } catch (error) {
-      return responseError(error.message, HttpStatus.UNPROCESSABLE_ENTITY)
-    }
+    const user = await this.userModel.findOne({ userName: userName })
+    return user
   }
 
 

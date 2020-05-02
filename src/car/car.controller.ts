@@ -6,6 +6,7 @@ import { IsNotEmptyPipe } from 'src/helper/pipe-helper';
 import { UpdateCarDto } from './dto/update-car.dto';
 import { DeleteDto } from 'src/helper/delete-dto-helper';
 import { GetUsersFilterDto } from 'src/user/dto/filter-user.dto';
+import { responseSuccess, responseError } from 'src/helper/response-helper';
 @Controller('car')
 @UsePipes(ValidationPipe)
 export class CarController {
@@ -14,32 +15,59 @@ export class CarController {
     @Get()
     async getCars(
         @Query() userFilter: GetUsersFilterDto
-    ): Promise<Car[]> {
-        return this.carService.getCars(userFilter);
+    ) {
+        try {
+            const cars = await this.carService.getCars(userFilter);
+            return responseSuccess(cars)
+        } catch (error) {
+            return responseError(error.message)
+        }
     }
     @Post()
     async createUser(@Body() newCar: CreateCarDto) {
-        return this.carService.createCar(newCar);
+        try {
+            const createdCar = await this.carService.createCar(newCar);
+            return responseSuccess(createdCar)
+        } catch (error) {
+            return responseError(error.message)
+        }
     }
 
     @Get('/:id')
     async getCarById(
         @Param('id') id: string,
     ) {
-        return this.carService.getCarById(id)
+
+        try {
+            const carById = await this.carService.getCarById(id)
+            return responseSuccess(carById)
+        } catch (error) {
+            return responseError(error.message)
+        }
     }
     @Patch('/:id')
     async updateCar(
         @Param('id') id: string,
         @Body(IsNotEmptyPipe) carUpdate: UpdateCarDto
-    ): Promise<Car> {
-        return this.carService.updateCar(id, carUpdate)
+    ) {
+
+        try {
+            const updatedCar = await this.carService.updateCar(id, carUpdate)
+            return responseSuccess(updatedCar)
+        } catch (error) {
+            return responseError(error.message)
+        }
     }
 
     @Delete('/:id')
-    async deleteCar(@Param('id') id: string) : Promise<Car> {
-        const softDelete: DeleteDto = { isDelete: true }
-        return this.carService.updateCar(id, softDelete);
+    async deleteCar(@Param('id') id: string) {
+        try {
+            const softDelete: DeleteDto = { isDelete: true }
+            const deletedCar = await this.carService.updateCar(id, softDelete);
+            return deletedCar
+        } catch (error) {
+            return responseError(error.message)
+        }
 
     }
 }

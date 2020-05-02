@@ -23,10 +23,10 @@ export class AuthService {
         try {
             const { userName, password } = userAuth
             const userDoc: User = await this.userService.findOneByUsername(userName)
-
+            
             if (!userDoc || !this.checkPassword(password, userDoc.password)) {
-
-                throw new UnauthorizedException()
+                
+                throw new Error('Unauthorized user')
             }
 
             const serializePayload: PayloadAuthDto = {
@@ -39,7 +39,7 @@ export class AuthService {
 
             const token: string = this.createJwtPayload(serializePayload)
 
-            return { success: true, token, expiresIn: this.jwtConfig.expiresIn }
+            return { token, expiresIn: this.jwtConfig.expiresIn }
 
         } catch (error) {
             throw error
@@ -48,7 +48,7 @@ export class AuthService {
 
     }
     async register(newUser: CreateUserDto): Promise<User> {
-        return this.userService.createUser(newUser)
+        return await this.userService.createUser(newUser)
     }
 
     checkPassword(candidatePassword: string, actualPassword: string): boolean {

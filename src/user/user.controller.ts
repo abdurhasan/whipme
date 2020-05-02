@@ -18,6 +18,8 @@ import { DeleteDto } from 'src/helper/delete-dto-helper';
 import { AssignCarDto } from './dto/assign-car-dto';
 import { CurrentUser } from '../helper/pipe-helper'
 import { PayloadAuthDto } from 'src/auth/dto/payload-auth.dto';
+import { responseSuccess, responseError } from 'src/helper/response-helper';
+
 
 
 
@@ -40,33 +42,62 @@ export class UserController {
         @CurrentUser() currentUser: PayloadAuthDto,
         @Body(SlugString) userCarOwned: AssignCarDto
     ) {
-        return this.userService.assignCar(currentUser, userCarOwned)
+        try {
+            const assigningCar = await this.userService.assignCar(currentUser, userCarOwned)
+            return responseSuccess(assigningCar)
+        } catch (error) {
+            return responseError(error.message)
+        }
+
     }
     @Get('/:id')
     async getUserById(
         @Param('id') userId: string,
     ) {
-        return this.userService.getUserById(userId)
+
+        try {
+            const userById = await this.userService.getUserById(userId)
+            return responseSuccess(userById)
+        } catch (error) {
+            return responseError(error.message)
+        }
     }
 
     @Get()
     @AuthRoles(['CAR_OWNER'])
-    async getUsers(): Promise<User[]> {
-        return this.userService.getUsers();
+    async getUsers() {
+        try {
+            const users = await this.userService.getUsers();
+            return responseSuccess(users)
+        } catch (error) {
+            return responseError(error.message)
+        }
     }
 
     @Patch(':id')
     async updateUser(
         @Param('id') userId: string,
         @Body(IsNotEmptyPipe) userUpdate: UpdateUserDto
-    ): Promise<User> {
-        return this.userService.updateUser(userId, userUpdate)
+    ) {
+        try {
+            const updatedUser = await this.userService.updateUser(userId, userUpdate)
+            return responseSuccess(updatedUser)
+        } catch (error) {
+            return responseError(error.message)
+        }
+
     }
 
     @Delete(':id')
     async deleteUser(@Param('id') userId: string) {
         const softDelete: DeleteDto = { isDelete: true }
-        return this.userService.updateUser(userId, softDelete);
+
+        try {
+            const deletedUser = await this.userService.updateUser(userId, softDelete);
+            return responseSuccess(deletedUser)
+        } catch (error) {
+            return responseError(error.message)
+        }
 
     }
 }
