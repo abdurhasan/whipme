@@ -11,7 +11,5 @@ export class UpdateCarDto {
     @IsOptional()
     year: number;
     @IsOptional()
-    type: string;
-    @IsOptional()
-    color: string;
+    type: string;    
 }

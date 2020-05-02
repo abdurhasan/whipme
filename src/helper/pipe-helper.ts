@@ -12,3 +12,11 @@ export class IsNotEmptyPipe implements PipeTransform {
     }
 
 }
+
+
+export class FilterPipe implements PipeTransform {
+
+    transform(value: any) {
+
+    }
+}

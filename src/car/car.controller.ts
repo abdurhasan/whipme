@@ -1,18 +1,21 @@
-import { Controller, Get, Post, Body, Patch, Param, UsePipes, ValidationPipe, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, UsePipes, ValidationPipe, Delete, Query } from '@nestjs/common';
 import { Car } from './car.interface'
 import { CarService } from './car.service';
 import { CreateCarDto } from './dto/create-car.dto'
 import { IsNotEmptyPipe } from 'src/helper/pipe-helper';
 import { UpdateCarDto } from './dto/update-car.dto';
 import { DeleteDto } from 'src/helper/delete-dto-helper';
+import { GetUsersFilterDto } from 'src/user/dto/get-user-filter.dto';
 @Controller('car')
 @UsePipes(ValidationPipe)
 export class CarController {
     constructor(private readonly carService: CarService) { }
 
     @Get()
-    async getCars(): Promise<Car[]> {
-        return this.carService.getCars();
+    async getCars(
+        @Query() userFilter: GetUsersFilterDto
+    ): Promise<Car[]> {
+        return this.carService.getCars(userFilter);
     }
     @Post()
     async createUser(@Body() newCar: CreateCarDto) {

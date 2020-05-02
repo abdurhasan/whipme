@@ -2,6 +2,11 @@ import * as mongoose from 'mongoose';
 
 
 export const CarSchema = new mongoose.Schema({
+    // _id: {
+    //     type: String,
+    //     required: true,
+    //     unique:true
+    // },
     type: {
         type: String,
         required: true
@@ -17,11 +22,7 @@ export const CarSchema = new mongoose.Schema({
     year: {
         type: Number,
         required: true
-    },
-    color: {
-        type: String,
-        required: true
-    },
+    },    
     isDelete: {
         type: Boolean,
         required: true

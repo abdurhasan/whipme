@@ -1,8 +1,7 @@
 import { IsNotEmpty, IsNumber } from 'class-validator';
 
 
-export class CreateCarDto {
-    _id: string;
+export class CreateCarDto {    
     @IsNotEmpty()
     brand: string;
     @IsNotEmpty()
@@ -11,7 +10,5 @@ export class CreateCarDto {
     @IsNumber()
     year: number;
     @IsNotEmpty()
-    type: string;
-    @IsNotEmpty()
-    color: string;
+    type: string;    
 }
