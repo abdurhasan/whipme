@@ -8,6 +8,7 @@ import { CreateUserDto } from './dto/create-user-dto';
 import { DeleteDto } from 'src/helper/delete-dto-helper';
 import { AssignCarDto } from './dto/assign-car-dto';
 import { PayloadAuthDto } from 'src/auth/dto/payload-auth.dto';
+// import { response } from '../helper/response-helper';
 
 
 
@@ -24,18 +25,18 @@ export class UserService {
       // validate duplicated numberPlate      
       const findNumberPlate = await this.userModel.find({ "cars.numberPlate": numberPlate }).select('cars -_id')
       if (findNumberPlate.length > 0) {
-        
+
         throw new Error(`Car with number plate : ${numberPlate} has been registered`)
       }
 
-      return await this.userModel.updateOne(
+      await this.userModel.updateOne(
         { _id: currentUser._id },
         {
           $push: { cars: userCarOwned }
         })
 
 
-      // return 'you can assign car'
+      return userCarOwned
 
 
     } catch (error) {
