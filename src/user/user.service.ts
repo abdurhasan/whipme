@@ -23,11 +23,22 @@ export class UserService {
 
       return await this.userModel.update(
         { _id: currentUser._id },
-        { $push: { cars: userCarOwned } }        
+        { $push: { cars: userCarOwned } }
       );
-      
+
     } catch (error) {
       return responseError(error.message, HttpStatus.UNPROCESSABLE_ENTITY)
+    }
+  }
+
+  async getUserById(userId: string): Promise<User> {
+    try {
+
+      return await this.userModel.findById(userId)
+
+    } catch (error) {
+      return responseError(error.message, HttpStatus.UNPROCESSABLE_ENTITY)
+
     }
   }
   async createUser(newUser: CreateUserDto): Promise<User> {
