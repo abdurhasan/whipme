@@ -13,7 +13,7 @@ export class IsNotEmptyPipe implements PipeTransform {
 
 }
 
-export const SlugStringList: string[] = ['numberPlate']
+export const SlugStringList: string[] = ['numberPlate'] // Make slugString pipes re-usable
 
 
 
@@ -21,13 +21,10 @@ export class SlugString implements PipeTransform {
 
     transform(value: object) {
         for (const key in value) {
-            if (SlugStringList.includes(key)) {
-                console.log(value[key])
+            if (SlugStringList.includes(key)) {                
                 value[key] = value[key].trim().toUpperCase().replace(/[ ,.]/g, "-")
             }
         }
-
-
         return value
     }
 

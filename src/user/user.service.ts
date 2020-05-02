@@ -18,15 +18,25 @@ export class UserService {
   ) { }
 
   async assignCar(currentUser: PayloadAuthDto, userCarOwned: AssignCarDto) {
-
+    const numberPlate: string = userCarOwned.numberPlate
     try {
-      return true
-      // validate duplicated numberPlate
 
-      // return await this.userModel.findOne(
-      //   { _id: currentUser._id , 'cars.numberPlate' : { $ne: userCarOwned.numberPlate } },
-      //   { $push: { cars: userCarOwned } }
-      // ).select("cars -_id");
+      // validate duplicated numberPlate      
+      const findNumberPlate = await this.userModel.find({ "cars.numberPlate": numberPlate }).select('cars -_id')
+      if (findNumberPlate.length > 0) {
+        
+        throw new Error(`Car with number plate : ${numberPlate} has been registered`)
+      }
+
+      return await this.userModel.updateOne(
+        { _id: currentUser._id },
+        {
+          $push: { cars: userCarOwned }
+        })
+
+
+      // return 'you can assign car'
+
 
     } catch (error) {
       return responseError(error.message, HttpStatus.UNPROCESSABLE_ENTITY)
