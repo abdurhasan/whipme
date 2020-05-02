@@ -11,7 +11,7 @@ import {
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './user.interface';
-import { CreateUserDto } from './dto/create-user-dto'
+// import { CreateUserDto } from './dto/create-user-dto'
 import { UpdateUserDto } from './dto/update-user-dto';
 import { AuthRoles } from 'src/auth/auth.guard';
 import { IsNotEmptyPipe } from 'src/helper/pipe-helper';
@@ -26,7 +26,16 @@ import { DeleteDto } from 'src/helper/delete-dto-helper';
 export class UserController {
     constructor(private readonly userService: UserService) { }
 
-    // @Post()  // : internal usage
+
+    @Post('/assignCar')
+    @AuthRoles(['CAR_OWNER','ADMIN'])
+    async assignCar(
+        @Body() newCar
+    ) {
+        return newCar
+    }
+
+    // @Post()  // : internal usage , use Auth/signUp instead
     // async createUser(
     //     @Body() newUser: CreateUserDto
     // ): Promise<User> {

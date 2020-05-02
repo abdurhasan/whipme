@@ -6,7 +6,7 @@ import { responseError } from 'src/helper/response-helper';
 import { CreateCarDto } from './dto/create-car.dto'
 import { UpdateCarDto } from './dto/update-car.dto';
 import { DeleteDto } from 'src/helper/delete-dto-helper';
-import { GetUsersFilterDto } from 'src/user/dto/get-user-filter.dto';
+import { GetUsersFilterDto } from 'src/user/dto/filter-user.dto';
 import * as mongoose from 'mongoose';
 
 
@@ -20,11 +20,21 @@ export class CarService {
         try {
             const select: string = userFilter.select ? userFilter.select.replace(/[ ,.]/g, " ") : ''
             if (select) delete userFilter.select
-            
+
             const cars = await this.carModel.find(userFilter).select(select)
             return cars
         } catch (error) {
             return responseError(error.message, HttpStatus.NOT_IMPLEMENTED)
+
+        }
+    }
+    async getCarById(carId: string): Promise<Car> {
+        try {
+
+            return await this.carModel.findById(carId)
+
+        } catch (error) {
+            return responseError(error.message, HttpStatus.UNPROCESSABLE_ENTITY)
 
         }
     }

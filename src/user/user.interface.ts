@@ -1,7 +1,7 @@
 import { AuthRole } from "src/auth/auth-role.enum";
 import { UserCarOwned } from "./user-cars.interface";
 
-export class User {
+export interface User {
     _id: string;
     userName: string;
     email: string;    
