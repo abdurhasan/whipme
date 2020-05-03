@@ -1,0 +1,12 @@
+{
+    "userName":"admin",
+    "email":"admin@test.mail.com",
+    "password":"Astajimlah1@",
+    "role":"ADMIN",
+    "detail":[
+       {
+           "field" : "phone",
+           "value":"1232323"
+       }
+    ]
+ }
