@@ -1,12 +1,8 @@
-import { Technician } from "src/branch/interface/branch-technicians.interface";
-import { BookingCar } from "./interface/booking-car.interface";
+import { BookingSlot } from "./interface/booking-slot.interface";
 
 export class BookingInterface {
-    date: string;
-    branch: string;
-    start: number; // Unix timestamp , independent local zone
-    end: number;
-    slot: number;
-    technicians: Technician[]
-    car:BookingCar
+    date: string;     // day - month - year
+    branch: string;     // branchId
+    slot: BookingSlot[]; // Unix timestamp , independent local zone
+
 }

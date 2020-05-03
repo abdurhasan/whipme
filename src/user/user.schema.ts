@@ -16,7 +16,7 @@ const carSubSchema = mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'Car'
     }
-}, { _id: false });
+}, { _id: true });
 
 
 export const UserSchema = new mongoose.Schema({

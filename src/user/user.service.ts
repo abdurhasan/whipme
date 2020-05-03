@@ -66,8 +66,9 @@ export class UserService {
   }
 
 
+
   async getUsers(): Promise<User[]> {
-    const users = await this.userModel.find({}).populate('cars.detail')
+    const users = await this.userModel.find({}).populate('cars.detail','model year brand type')
     return users
   }
 

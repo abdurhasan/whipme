@@ -26,7 +26,7 @@ export class BranchService {
         return branchById
     }
 
-    // async updateCar(_id: string, carUpdate: UpdateCarDto | DeleteDto): Promise<Car> {
+    // async updateBranch(_id: string, carUpdate: UpdateCarDto | DeleteDto): Promise<Car> {
     //     const car = await this.branchModel.findById(_id)
 
     //     if (!car) {
