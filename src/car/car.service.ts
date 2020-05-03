@@ -23,6 +23,10 @@ export class CarService {
         const carById = await this.carModel.findById(carId)
         return carById
     }
+    async findByIdUpsert(_id: string, doc?: Car) {
+        const foundCar = this.carModel.findOneAndUpdate({ _id }, doc, { upsert: true })        
+        return foundCar
+    }
     async createCar(newCar: CreateCarDto): Promise<Car> {
         const createdCar = new this.carModel(newCar)
         await createdCar.save()

@@ -14,8 +14,7 @@ export class UpdateUserDto {
         /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
         { message: 'password too weak' },
     )
-    password: string;
-    @IsIn(Object.values(AuthRole))
+    password: string;    
     @IsOptional()
     role: string;
     @IsArray()

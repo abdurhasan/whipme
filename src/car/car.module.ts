@@ -8,6 +8,7 @@ import { CarSchema } from './car.schema';
   imports: [
     MongooseModule.forFeature([{ name: 'Car', schema: CarSchema }])
   ],
+  exports: [CarService],
   controllers: [CarController],
   providers: [CarService]
 })

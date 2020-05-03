@@ -7,6 +7,7 @@ import { CreateUserDto } from './dto/create-user-dto';
 import { DeleteDto } from 'src/helper/delete-dto-helper';
 import { AssignCarDto } from './dto/assign-car-dto';
 import { PayloadAuthDto } from 'src/auth/dto/payload-auth.dto';
+import { CarService } from 'src/car/car.service';
 
 
 
@@ -15,6 +16,7 @@ import { PayloadAuthDto } from 'src/auth/dto/payload-auth.dto';
 export class UserService {
   constructor(
     @InjectModel('User') private readonly userModel: Model<User>,
+    private readonly carService: CarService
   ) { }
 
   async assignCar(currentUser: PayloadAuthDto, userCarOwned: AssignCarDto) {
@@ -22,10 +24,14 @@ export class UserService {
 
     const findNumberPlate = await this.userModel.find({ "cars.numberPlate": numberPlate }).select('cars -_id')  // validate duplicated numberPlate      
 
+
+
     if (findNumberPlate.length > 0) {
 
       throw new Error(`Car with number plate : ${numberPlate} has been registered`)
     }
+
+    // await this.carService.findByIdUpsert(userCarOwned.carId,userCarOwned)
 
     const updatedUser = await this.userModel.findOneAndUpdate(
       { _id: currentUser._id },
