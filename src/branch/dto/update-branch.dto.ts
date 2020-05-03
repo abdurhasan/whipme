@@ -10,7 +10,7 @@ export class UpdateBranchDto {
     @IsOptional()
     address: string;
     @IsOptional()
-    contact: string;
+    phone: string;
     @IsOptional()
     technicians: Technician[];
     @IsOptional()

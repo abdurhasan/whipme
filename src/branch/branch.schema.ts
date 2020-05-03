@@ -8,7 +8,7 @@ export const BranchSchema = new mongoose.Schema({
         required: true
     },
     address: String,
-    contact: String,
+    phone: String,
     technicians: [
         {
             name: String,

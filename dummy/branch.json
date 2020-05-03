@@ -1,0 +1,20 @@
+{
+    "_id": "5eadf9437b083568e9ffb778",
+    "isDelete": false,
+    "name": "BMW Malaysia Sdn. Bhd",
+    "address": "3501, Jalan Teknokrat 5, Cyber 5, 63000 Cyberjaya, Selangor, Malaysia",
+    "phone": "+60 3-8887 3888",
+    "startWorkingHour": 9,
+    "endWorkingHour": 16,
+    "technicians": [
+        {
+            "_id": "5eadf9437b083568e9ffb779",
+            "name": "techguy",
+            "phone": "+60 112372",
+            "userId": "5eadf83a5c0b4e680a483d72"
+        }
+    ],
+    "createdAt": "2020-05-02T22:50:43.118Z",
+    "updatedAt": "2020-05-02T22:50:43.118Z",
+    "__v": 0
+}

@@ -38,7 +38,10 @@ export const UserSchema = new mongoose.Schema({
             type: String,
             unique: true
         },
-        carId: mongoose.Types.ObjectId,
+        carId: {
+            type : mongoose.Types.ObjectId,
+            ref : 'Car'
+        },
         color: String
     }]
 }, { timestamps: true });
