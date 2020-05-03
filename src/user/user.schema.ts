@@ -6,6 +6,17 @@ const detailSubSchema = mongoose.Schema({
     field: String,
     value: String,
 }, { _id: false });
+const carSubSchema = mongoose.Schema({
+    numberPlate: {
+        type: String,
+        unique: true
+    },
+    color: String,
+    detail: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Car'
+    }
+}, { _id: false });
 
 
 export const UserSchema = new mongoose.Schema({
@@ -33,17 +44,7 @@ export const UserSchema = new mongoose.Schema({
         default: false
     },
     detail: [detailSubSchema],
-    cars: [{
-        numberPlate: {
-            type: String,
-            unique: true
-        },
-        carId: {
-            type : mongoose.Types.ObjectId,
-            ref : 'Car'
-        },
-        color: String
-    }]
+    cars: [carSubSchema]
 }, { timestamps: true });
 
 

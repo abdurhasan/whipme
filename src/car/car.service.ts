@@ -2,10 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Car } from './car.interface';
-import { CreateCarDto } from './dto/create-car.dto'
+import { CreateCarDto } from './dto/create-car.dto';
 import { UpdateCarDto } from './dto/update-car.dto';
 import { DeleteDto } from 'src/helper/delete-dto-helper';
-
+import * as IsEmpty from 'is-empty';
 
 
 
@@ -23,9 +23,21 @@ export class CarService {
         const carById = await this.carModel.findById(carId)
         return carById
     }
-    async findByIdUpsert(_id: string, doc?: Car) {
-        const foundCar = this.carModel.findOneAndUpdate({ _id }, doc, { upsert: true })        
-        return foundCar
+    async findByIdUpsert(_id: string, carDoc?: Car): Promise<Car> {
+        try {
+            let foundCar: Car = await this.getCarById(_id)
+
+            if (IsEmpty(foundCar)) {
+                foundCar = await this.createCar(carDoc)
+            }
+
+            return foundCar
+
+        } catch (error) {
+            return error
+        }
+
+
     }
     async createCar(newCar: CreateCarDto): Promise<Car> {
         const createdCar = new this.carModel(newCar)

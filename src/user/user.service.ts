@@ -25,25 +25,34 @@ export class UserService {
     const findNumberPlate = await this.userModel.find({ "cars.numberPlate": numberPlate }).select('cars -_id')  // validate duplicated numberPlate      
 
 
-
     if (findNumberPlate.length > 0) {
 
       throw new Error(`Car with number plate : ${numberPlate} has been registered`)
     }
 
-    // await this.carService.findByIdUpsert(userCarOwned.carId,userCarOwned)
+    try {
 
-    const updatedUser = await this.userModel.findOneAndUpdate(
-      { _id: currentUser._id },
-      {
-        $push: { cars: userCarOwned }
-      })
+      await this.carService.findByIdUpsert(userCarOwned.detail._id, userCarOwned.detail)
 
-    if (!updatedUser) {
-      throw new Error(`Failed to assign new car`)
+      const updatedUser = await this.userModel.findOneAndUpdate(
+        { _id: currentUser._id },
+        {
+          $push: { cars: userCarOwned }
+        })
+
+      if (!updatedUser) {
+        throw new Error(`Failed to assign new car, user can not updated`)
+      }
+
+      return updatedUser
+
+
+    } catch (error) {
+      return error
     }
 
-    return updatedUser
+
+
   }
 
   async getUserById(userId: string): Promise<User> {
@@ -58,7 +67,7 @@ export class UserService {
 
 
   async getUsers(): Promise<User[]> {
-    const users = await this.userModel.find({})
+    const users = await this.userModel.find({}).populate('cars.detail')
     return users
   }
 
