@@ -47,7 +47,8 @@ export class AuthService {
 
     }
     async register(newUser: CreateUserDto): Promise<User> {
-        return await this.userService.createUser(newUser)
+        const createdUser = await this.userService.createUser(newUser)
+        return createdUser
     }
 
     checkPassword(candidatePassword: string, actualPassword: string): boolean {

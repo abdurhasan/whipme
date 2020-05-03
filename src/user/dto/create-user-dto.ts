@@ -1,5 +1,6 @@
-import { IsNotEmpty, Matches, IsIn, IsArray, IsEmail } from 'class-validator';
+import { IsNotEmpty, Matches, IsIn, IsArray, IsEmail, IsOptional } from 'class-validator';
 import { AuthRole } from '../../auth/auth-role.enum';
+import { UserDetail } from '../interface/user-detail.interface';
 
 export class CreateUserDto {
   @IsNotEmpty()
@@ -13,7 +14,9 @@ export class CreateUserDto {
   )
   password: string;
   @IsIn(Object.values(AuthRole))
+  @IsNotEmpty()
   role: string;
   @IsArray()
-  detail: Array<object>;
+  @IsOptional()
+  detail: UserDetail[];
 }

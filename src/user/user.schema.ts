@@ -2,13 +2,13 @@ import * as mongoose from 'mongoose';
 import { AuthRole } from '../auth/auth-role.enum';
 import { encrypt } from 'src/helper/encryption-helper';
 
+const detailSubSchema = mongoose.Schema({
+    field: String,
+    value: String,
+}, { _id: false });
+
 
 export const UserSchema = new mongoose.Schema({
-    // _id: {
-    //     type: String,
-    //     required: true,
-    //     unique: true
-    // },
     email: {
         type: String,
         unique: true,
@@ -32,11 +32,7 @@ export const UserSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    detail: [{
-        field: String,
-        type: String,
-        value: String
-    }],
+    detail: [detailSubSchema],
     cars: [{
         numberPlate: {
             type: String,
@@ -46,6 +42,8 @@ export const UserSchema = new mongoose.Schema({
         color: String
     }]
 }, { timestamps: true });
+
+
 
 UserSchema.pre('save', function (next) {
     let { password, role } = this

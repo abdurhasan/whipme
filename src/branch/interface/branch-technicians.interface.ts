@@ -1,5 +1,5 @@
-export interface BranchTechnicainOwned {
+export interface Technician {
         name :string;
         userId : string;
-        contact: string;
+        phone: string;
 }

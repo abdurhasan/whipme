@@ -1,11 +1,9 @@
 import { Controller, Get, Post, Body, Patch, Param, UsePipes, ValidationPipe, Delete, Query, ParseIntPipe } from '@nestjs/common';
-import { Car } from './car.interface'
 import { CarService } from './car.service';
 import { CreateCarDto } from './dto/create-car.dto'
 import { IsNotEmptyPipe } from 'src/helper/pipe-helper';
 import { UpdateCarDto } from './dto/update-car.dto';
 import { DeleteDto } from 'src/helper/delete-dto-helper';
-import { GetUsersFilterDto } from 'src/user/dto/filter-user.dto';
 import { responseSuccess, responseError } from 'src/helper/response-helper';
 @Controller('car')
 @UsePipes(ValidationPipe)
@@ -13,18 +11,16 @@ export class CarController {
     constructor(private readonly carService: CarService) { }
 
     @Get()
-    async getCars(
-        @Query() userFilter: GetUsersFilterDto
-    ) {
+    async getCars() {
         try {
-            const cars = await this.carService.getCars(userFilter);
+            const cars = await this.carService.getCars();
             return responseSuccess(cars)
         } catch (error) {
             return responseError(error.message)
         }
     }
     @Post()
-    async createUser(@Body() newCar: CreateCarDto) {
+    async createCar(@Body() newCar: CreateCarDto) {
         try {
             const createdCar = await this.carService.createCar(newCar);
             return responseSuccess(createdCar)
