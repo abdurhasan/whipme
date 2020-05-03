@@ -6,6 +6,7 @@ const detailSubSchema = mongoose.Schema({
     field: String,
     value: String,
 }, { _id: false });
+
 const carSubSchema = mongoose.Schema({
     numberPlate: {
         type: String,
@@ -28,6 +29,14 @@ export const UserSchema = new mongoose.Schema({
     userName: {
         type: String,
         unique: true,
+        required: true
+    },
+    fullName: {
+        type: String,        
+        required: true
+    },
+    phone: {
+        type: String,        
         required: true
     },
     password: {

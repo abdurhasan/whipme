@@ -7,8 +7,7 @@ const firstApproachs = {
         {
             "_id": "5eaf0cca6d14848asdas34as",
             "invoiceNumber": "INV5EAF0CCA6D14848ASDAS34AS",
-            "car_owner": "5eaf0cca6d148487de7f243f",
-            //REFERS TO USER.CAR
+            "carOwner": "5eaf0cca6d148487de7f243f",            
             "car": "5eaf0cca6d14848al323jk",
             "technicians": [
                 "5eaf0cca6d1pas234lk",
@@ -31,7 +30,7 @@ const secondApproachs = {  // I choose the second approachs
     "date": "04-05-2020", 
     "branch": "5eadf9437b083568e9ffb778", //REFERS TO Branch
     "invoiceNumber": "INV5EAF0CCA6D14848ASDAS34AS",
-    "car_owner": "5eaf0cca6d148487de7f243f", ///REFERS TO USER
+    "carOwner": "5eaf0cca6d148487de7f243f", ///REFERS TO USER
     "driver": "5sjhajkdhu34kjhajsd",  //REFERS TO user
     "car": "5eaf0cca6d14848al323jk", //REFERS TO USER.CAR
     "technicians": [

@@ -1,12 +1,14 @@
 {
     "userName": "user",
     "email": "user@test.com",
+    "fullName": "user123123",
+    "phone": "+60123123",
     "password": "Astajimlah1@",
     "role": "CAR_OWNER",
     "detail": [
         {
-            "field": "phone",
-            "value": "+60 92323"
+            "field": "address",
+            "value": "sdn kuala lumpur"
         }
     ]
 }
