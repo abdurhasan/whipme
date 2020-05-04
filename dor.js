@@ -1,7 +1,8 @@
-const mongoose = require('mongoose')
+const moment = require('moment')
 
-const objectId = mongoose.Types.ObjectId
+
+const date = "05-05-1999"
 
 console.log(
-    objectId()
+    moment(date, "DD-MM-YYYY").isValid()
 )

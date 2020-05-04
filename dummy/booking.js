@@ -25,13 +25,12 @@ const firstApproachs = {
     ]
 }
 
-const secondApproachs = {  // I choose the second approachs
-    "_id": "5eaf0cca6d14848asdas34as",
+const secondApproachs = {  // I choose the second approachs    
     "date": "04-05-2020", 
     "branch": "5eadf9437b083568e9ffb778", //REFERS TO Branch
     "invoiceNumber": "INV5EAF0CCA6D14848ASDAS34AS",
     "carOwner": "5eaf0cca6d148487de7f243f", ///REFERS TO USER
-    "driver": "5sjhajkdhu34kjhajsd",  //REFERS TO user
+    "driver": "",  //REFERS TO user
     "car": "5eaf0cca6d14848al323jk", //REFERS TO USER.CAR
     "technicians": [
         "5eaf0cca6d1pas234lk",
