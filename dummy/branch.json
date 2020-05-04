@@ -7,14 +7,16 @@
     "startWorkingHour": 9,
     "endWorkingHour": 16,
     "technicians": [
-        {
-            "_id": "5eadf9437b083568e9ffb779",
-            "name": "techguy",
-            "phone": "+60 112372",
-            "userId": "5eadf83a5c0b4e680a483d72"
-        }
-    ],
-    "createdAt": "2020-05-02T22:50:43.118Z",
-    "updatedAt": "2020-05-02T22:50:43.118Z",
-    "__v": 0
+        "5eb041064151a99fe7939ede",
+        "5eb041064151a99fe7939edf",
+        "5eb041064151a99fe7939ee0",
+        "5eb041064151a99fe7939ee1",
+        "5eb041064151a99fe7939ee2",
+        "5eb041064151a99fe7939ee3",
+        "5eb041064151a99fe7939ee4",
+        "5eb041064151a99fe7939ee5",
+        "5eb041064151a99fe7939ee6",
+        "5eb041064151a99fe7939ee7"
+    ]    
+    
 }

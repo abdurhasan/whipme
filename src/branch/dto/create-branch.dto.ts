@@ -5,16 +5,13 @@ import { Technician } from '../interface/branch-technicians.interface';
 export class CreateBranchDto {
     @IsNotEmpty()
     name: string;
-    @IsOptional()
+    @IsNotEmpty()
     address: string;
-    @IsOptional()
-    phone: string;
-    @IsOptional()
+    @IsNotEmpty()
+    phone: string;    
     technicians: Technician[];
-    @IsOptional()
     @IsNumber()
     startWorkingHour: number;
-    @IsOptional()
     @IsNumber()
     endWorkingHour: number;
 }

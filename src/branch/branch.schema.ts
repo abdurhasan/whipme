@@ -11,9 +11,9 @@ export const BranchSchema = new mongoose.Schema({
     phone: String,
     technicians: [
         {
-            name: String,
-            userId: mongoose.Types.ObjectId,
-            phone: String
+            type: mongoose.Types.ObjectId,
+            ref : 'User'
+            
         }
     ],
     startWorkingHour: Number,

@@ -1,0 +1,122 @@
+[
+    {
+        "isDelete": false,
+        "_id": "5eb041064151a99fe7939ede",
+        "userName": "driver1",
+        "email": "driver1@test.com",
+        "password": "Astajimlah1@",
+        "fullName": "driver1 1233",
+        "phone": "0111111",
+        "role": "DRIVER",
+        "detail": [],
+        "cars": []
+    },
+    {
+        "isDelete": false,
+        "_id": "5eb041064151a99fe7939edf",
+        "userName": "driver2",
+        "email": "driver2@test.com",
+        "password": "Astajimlah1@",
+        "fullName": "driver2 1233",
+        "phone": "0111111",
+        "role": "DRIVER",
+        "detail": [],
+        "cars": []
+    },
+    {
+        "isDelete": false,
+        "_id": "5eb041064151a99fe7939ee0",
+        "userName": "driver3",
+        "email": "driver3@test.com",
+        "password": "Astajimlah1@",
+        "fullName": "driver3 1233",
+        "phone": "0111111",
+        "role": "DRIVER",
+        "detail": [],
+        "cars": []
+    },
+    {
+        "isDelete": false,
+        "_id": "5eb041064151a99fe7939ee1",
+        "userName": "driver4",
+        "email": "driver4@test.com",
+        "password": "Astajimlah1@",
+        "fullName": "driver4 1233",
+        "phone": "0111111",
+        "role": "DRIVER",
+        "detail": [],
+        "cars": []
+    },
+    {
+        "isDelete": false,
+        "_id": "5eb041064151a99fe7939ee2",
+        "userName": "driver5",
+        "email": "driver5@test.com",
+        "password": "Astajimlah1@",
+        "fullName": "driver5 1233",
+        "phone": "0111111",
+        "role": "DRIVER",
+        "detail": [],
+        "cars": []
+    },
+    {
+        "isDelete": false,
+        "_id": "5eb041064151a99fe7939ee3",
+        "userName": "driver6",
+        "email": "driver6@test.com",
+        "password": "Astajimlah1@",
+        "fullName": "driver6 1233",
+        "phone": "0111111",
+        "role": "DRIVER",
+        "detail": [],
+        "cars": []
+    },
+    {
+        "isDelete": false,
+        "_id": "5eb041064151a99fe7939ee4",
+        "userName": "driver7",
+        "email": "driver7@test.com",
+        "password": "Astajimlah1@",
+        "fullName": "driver7 1233",
+        "phone": "0111111",
+        "role": "DRIVER",
+        "detail": [],
+        "cars": []
+    },
+    {
+        "isDelete": false,
+        "_id": "5eb041064151a99fe7939ee5",
+        "userName": "driver8",
+        "email": "driver8@test.com",
+        "password": "Astajimlah1@",
+        "fullName": "driver8 1233",
+        "phone": "0111111",
+        "role": "DRIVER",
+        "detail": [],
+        "cars": []
+    },
+    {
+        "isDelete": false,
+        "_id": "5eb041064151a99fe7939ee6",
+        "userName": "driver9",
+        "email": "driver9@test.com",
+        "password": "Astajimlah1@",
+        "fullName": "driver9 1233",
+        "phone": "0111111",
+        "role": "DRIVER",
+        "detail": [],
+        "cars": []
+    },
+    {
+        "isDelete": false,
+        "_id": "5eb041064151a99fe7939ee7",
+        "userName": "driver10",
+        "email": "driver10@test.com",
+        "password": "Astajimlah1@",
+        "fullName": "driver10 1233",
+        "phone": "0111111",
+        "role": "DRIVER",
+        "detail": [],
+        "cars": []
+    }
+]
