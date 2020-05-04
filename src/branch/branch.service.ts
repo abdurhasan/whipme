@@ -26,6 +26,9 @@ export class BranchService {
         return branchById
     }
 
+    async getAvailableTechnician() {
+
+    }
     // async updateBranch(_id: string, carUpdate: UpdateCarDto | DeleteDto): Promise<Car> {
     //     const car = await this.branchModel.findById(_id)
 

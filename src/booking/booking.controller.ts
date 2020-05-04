@@ -19,8 +19,9 @@ export class BookingController {
     @Post()
     async createBooking(@Body() newBooking: CreateBookingDto) {
         try {
-            
-            return newBooking
+
+            const createdBooking = await this.bookingService.createBooking(newBooking)
+            return responseSuccess(createdBooking)
 
         } catch (error) {
             return responseError(error.message)
