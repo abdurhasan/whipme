@@ -36,9 +36,7 @@ const secondApproachs = {  // I choose the second approachs
     "technicians": [
         "5eaf0cca6d1pas234lk",
         "5eaf0cca6d14laskjdo3k"
-    ],
-    "start": 1588532918587,
-    "end": null,
+    ],    
     "events": [
         {
             "status": "ORDERED",

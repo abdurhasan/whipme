@@ -1,15 +1,15 @@
+import { BookingEvent } from "../interface/booking-event.interface";
 
 
-export class BookingInterface {
+export class Booking {
     date: string;     // day - month - year
     branch: string;     // branchId
     invoiceNumber: string;
     carOwner: string;
-    driver : string;
+    technicians: string[];
     car:string;
-    technicians: string[]
-    
-
+    driver : string;
+    events: BookingEvent[]
 }
 
 

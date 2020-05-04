@@ -1,13 +1,14 @@
 import * as mongoose from 'mongoose';
 import { AuthRole } from '../auth/auth-role.enum';
 import { encrypt } from 'src/helper/encryption-helper';
+const { Schema } = mongoose
 
-const detailSubSchema = mongoose.Schema({
+const detailSubSchema = Schema({
     field: String,
     value: String,
 }, { _id: false });
 
-const carSubSchema = mongoose.Schema({
+const carSubSchema = Schema({
     numberPlate: {
         type: String,
         unique: true
@@ -20,7 +21,7 @@ const carSubSchema = mongoose.Schema({
 }, { _id: true });
 
 
-export const UserSchema = new mongoose.Schema({
+export const UserSchema = new Schema({
     email: {
         type: String,
         unique: true,
@@ -32,11 +33,11 @@ export const UserSchema = new mongoose.Schema({
         required: true
     },
     fullName: {
-        type: String,        
+        type: String,
         required: true
     },
     phone: {
-        type: String,        
+        type: String,
         required: true
     },
     password: {

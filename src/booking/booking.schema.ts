@@ -1,47 +1,57 @@
 import * as mongoose from 'mongoose';
+const { Schema } = mongoose
 
+const eventSubSchema = Schema({
+    status: String,
+    time: Number
+}, { _id: false })
 
-export const BookingSchema = new mongoose.Schema({
+export const BookingSchema = new Schema({
 
-    date: String,
-    branch: String,
-    start: Number, // Unix timestamp , independent local zone
-    end: Number,
-    slot: Number,
-    technicians: [
-        {
-            userId: {
-                type: mongoose.Types.Objectid,
-                ref: 'User'
-            },
-            name: String,
-            phone: String
-        }
-    ],
+    date: {
+        type: String,
+        required: true
+    },
+    branch: {
+        type: String,
+        required: true
+    },
+    invoiceNumber: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    technicians: [{type: mongoose.Types.ObjectId,ref:'User'}],
     car: {
-        carId: mongoose.Types.Objectid,
-        numberPlate: String
-    }
+        type: mongoose.Types.ObjectId,
+        ref: 'User.cars',
+        required:true
+    },
+    driver: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User'
+
+    },
+    events: [eventSubSchema]
 }, { timestamps: true })
 
-// {
-//     "date": "04-05-2020",
-//     "branch": "5eadf9437b083568e9ffb778",
-//     "slot": [
+// {  
+//     "_id": "5eaf0cca6d14848asdas34as",
+//     "date": "04-05-2020", 
+//     "branch": "5eadf9437b083568e9ffb778", //REFERS TO Branch
+//     "invoiceNumber": "INV5EAF0CCA6D14848ASDAS34AS",
+//     "carOwner": "5eaf0cca6d148487de7f243f", ///REFERS TO USER
+//     "driver": "5sjhajkdhu34kjhajsd",  //REFERS TO user
+//     "car": "5eaf0cca6d14848al323jk", //REFERS TO USER.CAR
+//     "technicians": [
+//         "5eaf0cca6d1pas234lk",
+//         "5eaf0cca6d14laskjdo3k"
+//     ],
+//     "events": [
 //         {
-//             "_id": "5eaf0cca6d14848asdas34as",
-//             "car_owner": "5eaf0cca6d148487de7f243f",
-//             "car": {
-//                 "numberPlate": "X-28012ANNN",
-//                 "color": "red",
-//                 "detail": "5ead78c01d42c331221fe689"
-//             },
-//             "technicians": [
-//                 "5eaf0cca6d1pas234lk",
-//                 "5eaf0cca6d14laskjdo3k"
-//             ],
-//             "start": 1588532918587,
-//             "end": null
+//             "status": "ORDERED",
+//             "time": 1588543922488
 //         }
 //     ]
+
 // }
