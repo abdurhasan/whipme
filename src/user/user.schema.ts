@@ -54,7 +54,7 @@ export const UserSchema = new Schema({
         default: false
     },
     detail: [detailSubSchema],
-    cars: [carSubSchema]
+    cars: []
 }, { timestamps: true });
 
 

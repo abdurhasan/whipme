@@ -1,6 +1,7 @@
 import { IsNotEmpty, Matches, IsIn, IsArray, IsEmail, IsOptional } from 'class-validator';
 import { AuthRole } from '../../auth/auth-role.enum';
 import { UserDetail } from '../interface/user-detail.interface';
+import { UserCarOwned } from '../interface/user-cars.interface';
 
 export class CreateUserDto {
   @IsNotEmpty()
@@ -19,4 +20,5 @@ export class CreateUserDto {
   @IsArray()
   @IsOptional()
   detail: UserDetail[];
+  cars:UserCarOwned[];
 }

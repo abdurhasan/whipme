@@ -8,8 +8,7 @@
         "fullName": "driver1 1233",
         "phone": "0111111",
         "role": "DRIVER",
-        "detail": [],
-        "cars": []
+        "detail": []
     },
     {
         "isDelete": false,
@@ -20,8 +19,7 @@
         "fullName": "driver2 1233",
         "phone": "0111111",
         "role": "DRIVER",
-        "detail": [],
-        "cars": []
+        "detail": []
     },
     {
         "isDelete": false,
@@ -32,8 +30,7 @@
         "fullName": "driver3 1233",
         "phone": "0111111",
         "role": "DRIVER",
-        "detail": [],
-        "cars": []
+        "detail": []
     },
     {
         "isDelete": false,
@@ -44,8 +41,7 @@
         "fullName": "driver4 1233",
         "phone": "0111111",
         "role": "DRIVER",
-        "detail": [],
-        "cars": []
+        "detail": []
     },
     {
         "isDelete": false,
@@ -56,8 +52,7 @@
         "fullName": "driver5 1233",
         "phone": "0111111",
         "role": "DRIVER",
-        "detail": [],
-        "cars": []
+        "detail": []
     },
     {
         "isDelete": false,
@@ -68,8 +63,7 @@
         "fullName": "driver6 1233",
         "phone": "0111111",
         "role": "DRIVER",
-        "detail": [],
-        "cars": []
+        "detail": []
     },
     {
         "isDelete": false,
@@ -80,8 +74,7 @@
         "fullName": "driver7 1233",
         "phone": "0111111",
         "role": "DRIVER",
-        "detail": [],
-        "cars": []
+        "detail": []
     },
     {
         "isDelete": false,
@@ -92,8 +85,7 @@
         "fullName": "driver8 1233",
         "phone": "0111111",
         "role": "DRIVER",
-        "detail": [],
-        "cars": []
+        "detail": []
     },
     {
         "isDelete": false,
@@ -104,8 +96,7 @@
         "fullName": "driver9 1233",
         "phone": "0111111",
         "role": "DRIVER",
-        "detail": [],
-        "cars": []
+        "detail": []
     },
     {
         "isDelete": false,
@@ -116,7 +107,6 @@
         "fullName": "driver10 1233",
         "phone": "0111111",
         "role": "DRIVER",
-        "detail": [],
-        "cars": []
+        "detail": []
     }
 ]

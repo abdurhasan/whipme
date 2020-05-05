@@ -18,7 +18,7 @@ export class BranchService {
         return createdCar
     }
     async getBranchs(): Promise<Branch[]> {
-        const branch = await this.branchModel.find({}).populate('technicians','userName email fullName phone')
+        const branch = await this.branchModel.find({}).populate('technicians', 'userName email fullName phone')
         return branch
     }
     async getBranchById(branchId: string): Promise<Branch> {
@@ -26,7 +26,10 @@ export class BranchService {
         return branchById
     }
 
-    async getAvailableTechnician() {
+    async assignTechnician() {
+
+    }
+    async getAvailableTechnician() { 
 
     }
     // async updateBranch(_id: string, carUpdate: UpdateCarDto | DeleteDto): Promise<Car> {

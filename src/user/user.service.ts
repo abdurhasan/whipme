@@ -59,8 +59,12 @@ export class UserService {
     const userById: User = await this.userModel.findById(userId)
     return userById
   }
-  async createUser(newUser: CreateUserDto): Promise<User> {
+  async createUser(newUser: CreateUserDto): Promise<any> {
+    if(newUser.role !== 'CAR_OWNER'){      
+      delete newUser.cars
+    }
     const createdUser = new this.userModel(newUser)
+    
     await createdUser.save()
     return createdUser
   }

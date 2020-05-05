@@ -17,20 +17,25 @@ export class BookingService {
         const bookings = await this.bookingModel.find({})
         return bookings
     }
-    async createBooking(newBooking: CreateBookingDto): Promise<Booking> {
+    async createBooking(newBooking: CreateBookingDto): Promise<any> {
         const createdBooking = new this.bookingModel(newBooking)
         // 1. Generate Invoice ID 
         const invoiceNumber: string = 'INV' + String(createdBooking._id).toUpperCase()
 
 
         // 2. Generate Available Technicians 
-        // service /getAvailableTechnicians
-
+        // service /getAvailableTechnicians 
+        // const availableTechnicians = await this.getAvailableTechnicians(newBooking.branch, newBooking.date)
+        const availableTechnicians = [
+            "5eb041064151a99fe7939ee0",
+            "5eb041064151a99fe7939ee1"
+        ]
 
         // 3. Generate BookingEvent : Ordered
         const bookingEvent: BookingEvent = { status: BookingEventsEnum['0'], time: Date.now() }
 
-        // Insert to new booking
+        // // Insert to new booking
+        createdBooking.technicians.push(...availableTechnicians)
         createdBooking.invoiceNumber = invoiceNumber
         createdBooking.events.push(bookingEvent)
 
@@ -38,5 +43,19 @@ export class BookingService {
         await createdBooking.save()
         return createdBooking
     }
-    
+
+    async getAvailableTechnicians(branch: string, date: string) {
+        const getBranch = await this.bookingModel.find({ $and: [{ branch }, { date }] })
+        // const getBranch = await this.bookingModel.aggregate([
+        //     { $match: { $and: [{ branch }, { date }] } },
+        //     {
+        //         $group: {
+        //             _id: "$branch",
+        //             technicians: { $first: "$technicians" },
+
+        //         }
+        //     }
+        // ])
+        return getBranch
+    }
 }
