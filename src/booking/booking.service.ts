@@ -29,7 +29,7 @@ export class BookingService {
 
         // 2. Generate Available Technicians 
         // service /getAvailableTechnicians 
-        const availableTechnicians = await this.getAvailableTechnicians(newBooking.branch, newBooking.date)
+        const availableTechnicians: string[] = await this.getAvailableTechnicians(newBooking.branch, newBooking.date)
 
         // // 3. Generate BookingEvent : Ordered
         // const bookingEvent: BookingEvent = { status: BookingEventsEnum['0'], time: Date.now() }
@@ -44,52 +44,22 @@ export class BookingService {
         return availableTechnicians
     }
 
-    async getAvailableTechnicians(branch: string, date: string) {
+    async getAvailableTechnicians(branch: string, date: string): Promise<string[]> {
 
-        const busyTechnicians: string[] = await this.bookingModel.aggregate([
+        const busyTechnicians: string[] = await this.bookingModel.aggregate()
+            .match({ $and: [{ branch }, { date }] })
+            .group({ _id: "$branch", technicians: { $push: "$technicians" } })
+            .project({ "_id": 0, "technicians": 1 })
+            .addFields({ "technicians": { "$reduce": { "input": "$technicians", "initialValue": [], "in": { "$concatArrays": ["$$value", "$$this"] } } } })
+            .then(res => res[0].technicians.map(snap => String(snap)))
 
-            { $match: { $and: [{ branch }, { date }] } },
-            {
-                $group: {
-                    _id: "$branch",
-                    technicians: { $push: "$technicians" }
-                }
-            },
-            { $project: { "_id": 0, "technicians": 1 } },
-            {
-                $addFields: {
-                    technicians: {
-                        "$reduce": {
-                            "input": "$technicians",
-                            "initialValue": [],
-                            "in": { "$concatArrays": ["$$value", "$$this"] }
-                        }
-                    }
-                }
-            }
-        ]).then(res => res[0].technicians)
-
-        // const listTechnicians = await this.branchModel.findById({ _id: branch }).select('technicians -_id')
+        const availableTechnicians = await this.branchModel.findById(branch)
+            .select('-_id technicians')
+            .then(list => list.technicians.filter(el => !busyTechnicians.includes(String(el))))
 
 
-        // const freeTechnicians = listTechnicians.filter( techy => !busyTechnicians.includes(techy))
 
-        return busyTechnicians
-        // return freeTechnicians
+        return availableTechnicians
+
     }
 }
-
-
-// db.getCollection('stuff').aggregate([
-//     {
-//         "$group": {
-//             "_id": {
-//                 "product": "$product", "state": "$state"
-//             },
-//             "nondnd": { "$push": "$nondnd" },
-//             "dnd": { "$push": "$dnd" },
-//             "land": { "$push": "$land" },
-//             "technicians": { "$push": "$technicians" }
-//         }
-//     },
-// ])
