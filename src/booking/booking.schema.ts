@@ -21,11 +21,16 @@ export const BookingSchema = new Schema({
         required: true,
         unique: true
     },
-    technicians: [{type: mongoose.Types.ObjectId,ref:'User'}],
+    technicians: [
+        {
+            type: mongoose.Types.ObjectId,
+            ref: 'User'
+        }
+    ],
     car: {
         type: mongoose.Types.ObjectId,
         ref: 'User.cars',
-        required:true
+        required: true
     },
     driver: {
         type: mongoose.Types.ObjectId,

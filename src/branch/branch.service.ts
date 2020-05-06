@@ -17,19 +17,27 @@ export class BranchService {
         await createdCar.save()
         return createdCar
     }
-    async getBranchs(): Promise<Branch[]> {
-        const branch = await this.branchModel.find({}).populate('technicians', 'userName email fullName phone')
+    async getBranchs(filter?: object): Promise<Branch[]> {
+        filter = filter ? filter : {}
+        const branch = await this.branchModel.find(filter).populate('technicians', 'userName email fullName phone')
         return branch
     }
-    async getBranchById(branchId: string): Promise<Branch> {
-        const branchById = await this.branchModel.findById(branchId)
+    async getBranchById(branchId: string, selectOption?: string) {
+        // select = -id,name,address'
+        selectOption = selectOption ? selectOption.replace(/,/g, ' ') : ''
+        const branchById = await this.branchModel.findById(branchId).select(selectOption)
         return branchById
+    }
+
+    async aggregateBranch(query: object[]): Promise<Branch[]> {
+        const branch = await this.branchModel.aggregate(query)
+        return branch
     }
 
     async assignTechnician() {
 
     }
-    async getAvailableTechnician() { 
+    async getAvailableTechnician() {
 
     }
     // async updateBranch(_id: string, carUpdate: UpdateCarDto | DeleteDto): Promise<Car> {
