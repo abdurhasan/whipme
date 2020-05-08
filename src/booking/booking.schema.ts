@@ -13,7 +13,8 @@ export const BookingSchema = new Schema({
         required: true
     },
     branch: {
-        type: String,
+        type: mongoose.Types.ObjectId,
+        ref : 'Branch',
         required: true
     },
     invoiceNumber: {

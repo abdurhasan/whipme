@@ -12,11 +12,11 @@ import { CarModule } from 'src/car/car.module';
     MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
     CarModule
   ],
-  exports: [UserService],
+  exports: [MongooseModule, UserService],
   controllers: [UserController],
   providers: [UserService]
 })
-export class UserModule { 
+export class UserModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(AuthMiddleware)
       .forRoutes(UserController)

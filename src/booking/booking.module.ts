@@ -4,9 +4,16 @@ import { BookingService } from './booking.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { BookingSchema } from './booking.schema';
 import { BranchModule } from 'src/branch/branch.module';
+import { CarModule } from 'src/car/car.module';
+import { UserModule } from 'src/user/user.module';
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: 'Booking', schema: BookingSchema }]), BranchModule],
+  imports: [
+    MongooseModule.forFeature([{ name: 'Booking', schema: BookingSchema }]),
+    UserModule,
+    BranchModule,
+    CarModule
+  ],
   controllers: [BookingController],
   providers: [BookingService]
 })
