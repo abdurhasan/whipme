@@ -1,7 +1,8 @@
 import * as mongoose from 'mongoose';
+const { Schema } = mongoose
 
 
-export const CarSchema = new mongoose.Schema({
+export const CarSchema = new Schema({
     // _id: {
     //     type: String,
     //     required: true,
@@ -22,9 +23,9 @@ export const CarSchema = new mongoose.Schema({
     year: {
         type: Number,
         required: true
-    },    
+    },
     isDelete: {
         type: Boolean,
-        default : false
+        default: false
     }
 }, { timestamps: true });
