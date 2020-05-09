@@ -38,6 +38,19 @@ export class BranchController {
             return responseError(error.message)
         }
     }
+
+    @Post('/assignTechnician')
+    async assignTechnician(
+        @Body() signTechnician
+    ){  
+        try {
+            return signTechnician
+            // const signedTechnician = await this.branchService.assignTechnician(signTechnician)
+            // return responseSuccess(branchById)
+        } catch (error) {
+            return responseError(error.message)
+        }
+    }
     // @Patch('/:id')
     // async updateCar(
     //     @Param('id') id: string,

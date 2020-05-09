@@ -34,7 +34,8 @@ export class BranchService {
         return branch
     }
 
-    async assignTechnician() {
+    async assignTechnician(branchId: string, technicianId: string) {
+
 
     }
     async getAvailableTechnician() {
