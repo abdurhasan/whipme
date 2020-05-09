@@ -25,7 +25,6 @@ import { responseSuccess, responseError } from 'src/helper/response-helper';
 
 
 @Controller('user')
-@UsePipes(ValidationPipe)
 export class UserController {
     constructor(private readonly userService: UserService) { }
 

@@ -6,7 +6,6 @@ import { UpdateCarDto } from './dto/update-car.dto';
 import { DeleteDto } from 'src/helper/delete-dto-helper';
 import { responseSuccess, responseError } from 'src/helper/response-helper';
 @Controller('car')
-@UsePipes(ValidationPipe)
 export class CarController {
     constructor(private readonly carService: CarService) { }
 

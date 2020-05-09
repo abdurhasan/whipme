@@ -4,7 +4,6 @@ import { responseError, responseSuccess } from 'src/helper/response-helper';
 import { CreateBookingDto } from './dto/create-booking.dto';
 
 @Controller('booking')
-@UsePipes(ValidationPipe)
 export class BookingController {
     constructor(private bookingService: BookingService) { }
     @Get()

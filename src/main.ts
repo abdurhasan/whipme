@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as config from 'config';
 import * as helmet from 'helmet';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const serverConfig = config.get('server')
@@ -15,6 +16,7 @@ async function bootstrap() {
     app.use(helmet())
   }
 
+  app.useGlobalPipes(new ValidationPipe());
   app.use(bearerToken())
 
   await app.listen(serverConfig.port);

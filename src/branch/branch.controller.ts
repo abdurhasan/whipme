@@ -3,7 +3,6 @@ import { responseSuccess, responseError } from 'src/helper/response-helper';
 import { BranchService } from './branch.service';
 import { CreateBranchDto } from './dto/create-branch.dto';
 @Controller('branch')
-@UsePipes(ValidationPipe)
 export class BranchController {
     constructor(private readonly branchService: BranchService) { }
 

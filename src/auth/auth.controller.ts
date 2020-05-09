@@ -16,7 +16,6 @@ import { CreateUserDto } from 'src/user/dto/create-user-dto';
 import { responseSuccess, responseError } from 'src/helper/response-helper';
 
 
-@UsePipes(ValidationPipe)
 @Controller('auth')
 export class AuthController {
     constructor(
