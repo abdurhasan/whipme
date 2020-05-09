@@ -28,9 +28,8 @@ export const BookingSchema = new Schema({
             ref: 'User'
         }
     ],
-    car: {
-        type: mongoose.Types.ObjectId,
-        ref: 'User.cars',
+    carNumberPlate: {
+        type: String,        
         required: true
     },
     driver: {

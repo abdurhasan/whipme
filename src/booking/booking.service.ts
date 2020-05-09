@@ -35,21 +35,19 @@ export class BookingService {
         return moment(new Date(date)).format("DD MMMM YYYY")
     }
     async createBooking(newBooking: CreateBookingDto): Promise<any> {
-        const { branch, date, car } = newBooking
+        const { branch, date, carNumberPlate } = newBooking
 
         const createdBooking = new this.bookingModel(newBooking).populate('car')
         const invoiceNumber: string = 'INV' + String(createdBooking._id).toUpperCase()
 
 
         // Car checking
-        // const _isCarAvailable = await this.isCarAvailable(branch, date, car)
-        // if (!_isCarAvailable) {
-        //     throw new Error(`carId : ${car} already has service on ${this.getDateString(date)}`)
-        // }
-        return createdBooking
+        const assignedCar = await this.assigningCar(branch, date, carNumberPlate)
+
+        return assignedCar
 
         // Technicians checking
-        const listTechnicians: string[] = await this.getAvailableTechnicians(newBooking.branch, newBooking.date)
+        const assignedTechnicians: string[] = await this.getAvailableTechnicians(newBooking.branch, newBooking.date)
 
 
 
@@ -66,24 +64,22 @@ export class BookingService {
 
     }
 
-    async getCar(carId: string) {
+    async assigningCar(branch: string, date: string, carNumberPlate: string) {
+        const thisCarAvailable = await this.isCarAvailable(branch, date, carNumberPlate)
 
+        // if (!thisCarAvailable) {
+        //     throw new Error(`car with number plate : ${carNumberPlate} already has service on ${this.getDateString(date)}`)
+        // }
+
+        return thisCarAvailable
     }
-
-    async assignDriver(listTechnicians) {
-
-    }
-
 
     async isCarAvailable(branch: string, date: string, car: string) {
         const existCar = await this.bookingModel.findOne({ branch, date, car })
-        return IsEmpty(existCar)
+        return existCar
+        // return IsEmpty(existCar)
     }
 
-    async isTechniciansAvailable(carId: string, listTechnicians: string[]) {
-        // const carDetail = await this.userModel.findById(carId)
-
-    }
 
     async getAvailableTechnicians(branch: string, date: string): Promise<string[]> {
 

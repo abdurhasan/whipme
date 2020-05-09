@@ -7,7 +7,7 @@ export class Booking {
     invoiceNumber: string;
     carOwner: string;
     technicians: string[];
-    car:string;
+    carNumberPlate:string;
     driver : string;
     events: BookingEvent[]
 }

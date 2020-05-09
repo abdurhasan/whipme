@@ -9,7 +9,7 @@
     },
     "jwt": {
         "secret": "myS3cre3t",
-        "expiresIn": "24h"
+        "expiresIn": "100h"
     },
     "encryption": {
         "secret": "myS3cre3t"

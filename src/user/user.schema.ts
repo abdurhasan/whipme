@@ -9,16 +9,13 @@ const detailSubSchema = Schema({
 }, { _id: false });
 
 const carSubSchema = Schema({
-    numberPlate: {
-        type: String,
-        unique: true
-    },
+    numberPlate: String,
     color: String,
     detail: {
         type: mongoose.Types.ObjectId,
         ref: 'Car'
     }
-}, { _id: true });
+}, { _id: false });
 
 
 export const UserSchema = new Schema({
@@ -54,7 +51,11 @@ export const UserSchema = new Schema({
         default: false
     },
     detail: [detailSubSchema],
-    cars: []
+    cars: {
+        type: [carSubSchema],
+        default: [],
+        required: false
+    }
 }, { timestamps: true });
 
 
