@@ -8,8 +8,7 @@ import { PayloadAuthDto } from './dto/payload-auth.dto';
 
 @Injectable()
 export class AuthMiddleware implements NestMiddleware {
-    constructor() { }
-
+    
     async use(req: any, res: any, next: any) {
         const { token } = req
         const jwtConfig = config.get("jwt")

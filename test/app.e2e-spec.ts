@@ -18,7 +18,31 @@ describe('AppController (e2e)', () => {
   it('/ (GET)', () => {
     return request(app.getHttpServer())
       .get('/')
-      .expect(200)
-      .expect('Hello World!');
+      .expect(404)
+
   });
 });
+
+
+
+// describe('GET /users', () => {
+//   it('should return an array of users', async () => {
+//     // Pre-populate the DB with some dummy users
+//     await repository.save([
+//       { name: 'test-name-0' },
+//       { name: 'test-name-1' },
+//     ]);
+
+//     // Run your end-to-end test
+//     const { body } = await supertest.agent(app.getHttpServer())
+//       .get('/users')
+//       .set('Accept', 'application/json')
+//       .expect('Content-Type', /json/)
+//       .expect(200);
+
+//     expect(body).toEqual([
+//       { id: expect.any(Number), name: 'test-name-0' },
+//       { id: expect.any(Number), name: 'test-name-1' },
+//     ]);
+//   });
+// });

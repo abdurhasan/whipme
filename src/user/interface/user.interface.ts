@@ -1,4 +1,4 @@
-import { AuthRole } from "src/auth/auth-role.enum";
+import { AuthRole } from "src/auth/enum/auth-role.enum";
 import { UserCarOwned } from "./user-cars.interface";
 import { UserDetail } from "./user-detail.interface";
 

@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-import { AuthRole } from '../auth/auth-role.enum';
+import { AuthRole } from '../auth/enum/auth-role.enum';
 import { encrypt } from '../helper/encryption-helper';
 import { User } from './interface/user.interface';
 const { Schema } = mongoose

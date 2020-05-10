@@ -1,6 +1,6 @@
 import { IsNotEmpty } from "class-validator";
 import { BookingEvent } from "../interface/booking-event.interface";
-import { IsBookingDate } from "src/helper/pipe-helper";
+import { IsBookingDate } from "../../helper/pipe-helper";
 
 
 

@@ -1,5 +1,5 @@
 import { Matches, IsIn, IsArray, IsEmpty, IsOptional, IsEmail, IsBoolean } from 'class-validator';
-import { AuthRole } from '../../auth/auth-role.enum';
+import { AuthRole } from '../../auth/enum/auth-role.enum';
 
 export class UpdateUserDto {
     @IsEmpty({ message: 'you cannot change the id' })

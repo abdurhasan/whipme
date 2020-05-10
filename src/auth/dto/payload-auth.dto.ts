@@ -1,4 +1,4 @@
-import { AuthRole } from '../auth-role.enum';
+import { AuthRole } from '../enum/auth-role.enum';
 
 export interface PayloadAuthDto {
     _id: string;

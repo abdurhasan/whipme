@@ -4,7 +4,7 @@ import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { CreateBookingDto } from './dto/create-booking.dto';
 import { BookingEvent } from './interface/booking-event.interface';
-import { BookingEventsEnum } from './booking-events.enum';
+import { BookingEventsEnum } from './enum/booking-events.enum';
 
 import { Branch } from '../branch/interface/branch.interface';
 import * as mongoose from 'mongoose';

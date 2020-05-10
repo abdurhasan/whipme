@@ -1,5 +1,5 @@
 import { IsNotEmpty, Matches, IsIn, IsArray, IsEmail, IsOptional, IsEmpty } from 'class-validator';
-import { AuthRole } from '../../auth/auth-role.enum';
+import { AuthRole } from '../../auth/enum/auth-role.enum';
 import { UserDetail } from '../interface/user-detail.interface';
 
 

@@ -1,6 +1,6 @@
 import { Injectable, CanActivate, ExecutionContext, SetMetadata } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { AuthRole } from './auth-role.enum';
+import { AuthRole } from './enum/auth-role.enum';
 import { PayloadAuthDto } from './dto/payload-auth.dto';
 
 @Injectable()
