@@ -3,8 +3,8 @@ import { UserController } from './user.controller';
 import { UserService } from './user.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserSchema } from './user.schema';
-import { AuthMiddleware } from 'src/auth/auth.middleware';
-import { CarModule } from 'src/car/car.module';
+import { AuthMiddleware } from '../auth/auth.middleware';
+import { CarModule } from '../car/car.module';
 
 
 @Module({

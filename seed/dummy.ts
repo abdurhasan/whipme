@@ -1,10 +1,10 @@
 
 import { User } from '../src/user/interface/user.interface'
-import { AuthRole } from 'src/auth/auth-role.enum'
-import { Booking } from 'src/booking/interface/booking.interface'
-import { BookingEventsEnum } from 'src/booking/booking-events.enum'
-import { Car } from 'src/car/car.interface'
-import { Branch } from 'src/branch/interface/branch.interface'
+import { AuthRole } from '../auth/auth-role.enum'
+import { Booking } from '../booking/interface/booking.interface'
+import { BookingEventsEnum } from '../booking/booking-events.enum'
+import { Car } from '../car/car.interface'
+import { Branch } from '../branch/interface/branch.interface'
 export const UserSeed: User[] = [
     {
         "_id": "5eb71cb14f4f88abd2cd13e2",

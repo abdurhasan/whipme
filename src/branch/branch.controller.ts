@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body, Patch, Param, UsePipes, ValidationPipe, Delete, Query, ParseIntPipe } from '@nestjs/common';
-import { responseSuccess, responseError } from 'src/helper/response-helper';
+import { responseSuccess, responseError } from '../helper/response-helper';
 import { BranchService } from './branch.service';
 import { CreateBranchDto } from './dto/create-branch.dto';
 @Controller('branch')

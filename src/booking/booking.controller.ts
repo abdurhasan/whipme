@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, UsePipes, ValidationPipe } from '@nestjs/common';
 import { BookingService } from './booking.service';
-import { responseError, responseSuccess } from 'src/helper/response-helper';
+import { responseError, responseSuccess } from '../helper/response-helper';
 import { CreateBookingDto } from './dto/create-booking.dto';
 
 @Controller('booking')

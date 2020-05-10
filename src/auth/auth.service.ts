@@ -1,13 +1,13 @@
 import { Injectable, HttpException, UnauthorizedException } from '@nestjs/common';
 import { SigninAuthDto } from './dto/signin-auth.dto';
-import { CreateUserDto } from 'src/user/dto/create-user-dto';
-import { UserService } from 'src/user/user.service';
+import { CreateUserDto } from '../user/dto/create-user-dto';
+import { UserService } from '../user/user.service';
 import { PayloadAuthDto } from './dto/payload-auth.dto';
 import * as Jwt from 'jsonwebtoken';
 import * as config from 'config';
-import { encrypt, decrypt } from 'src/helper/encryption-helper';
+import { encrypt, decrypt } from '../helper/encryption-helper';
 import { ResponseAuthDto } from './dto/response-auth.dto';
-import { User } from 'src/user/interface/user.interface';
+import { User } from '../user/interface/user.interface';
 import * as moment from 'moment';
 
 

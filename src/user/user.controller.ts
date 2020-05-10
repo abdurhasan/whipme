@@ -12,13 +12,13 @@ import {
 import { UserService } from './user.service';
 import { User } from './interface/user.interface';
 import { UpdateUserDto } from './dto/update-user-dto';
-import { AuthRoles } from 'src/auth/auth.guard';
-import { IsNotEmptyPipe, SlugString } from 'src/helper/pipe-helper';
-import { DeleteDto } from 'src/helper/delete-dto-helper';
+import { AuthRoles } from '../auth/auth.guard';
+import { IsNotEmptyPipe, SlugString } from '../helper/pipe-helper';
+import { DeleteDto } from '../helper/delete-dto-helper';
 import { AssignCarDto } from './dto/assign-car-dto';
 import { CurrentUser } from '../helper/pipe-helper'
-import { PayloadAuthDto } from 'src/auth/dto/payload-auth.dto';
-import { responseSuccess, responseError } from 'src/helper/response-helper';
+import { PayloadAuthDto } from '../auth/dto/payload-auth.dto';
+import { responseSuccess, responseError } from '../helper/response-helper';
 
 
 

@@ -12,8 +12,8 @@ import {
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { SigninAuthDto } from './dto/signin-auth.dto';
-import { CreateUserDto } from 'src/user/dto/create-user-dto';
-import { responseSuccess, responseError } from 'src/helper/response-helper';
+import { CreateUserDto } from '../user/dto/create-user-dto';
+import { responseSuccess, responseError } from '../helper/response-helper';
 
 
 @Controller('auth')

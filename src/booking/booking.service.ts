@@ -6,11 +6,11 @@ import { CreateBookingDto } from './dto/create-booking.dto';
 import { BookingEvent } from './interface/booking-event.interface';
 import { BookingEventsEnum } from './booking-events.enum';
 
-import { Branch } from 'src/branch/interface/branch.interface';
+import { Branch } from '../branch/interface/branch.interface';
 import * as mongoose from 'mongoose';
-import { Car } from 'src/car/car.interface';
-import { UserService } from 'src/user/user.service';
-import { User } from 'src/user/interface/user.interface';
+import { Car } from '../car/car.interface';
+import { UserService } from '../user/user.service';
+import { User } from '../user/interface/user.interface';
 import * as IsEmpty from 'is-empty';
 import * as moment from 'moment';
 

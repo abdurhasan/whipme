@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { SeedService } from './seed.service';
-import { AppModule } from 'src/app.module';
+import { AppModule } from '../app.module';
 
 
 @Module({

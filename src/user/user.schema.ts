@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 import { AuthRole } from '../auth/auth-role.enum';
-import { encrypt } from 'src/helper/encryption-helper';
+import { encrypt } from '../helper/encryption-helper';
 import { User } from './interface/user.interface';
 const { Schema } = mongoose
 

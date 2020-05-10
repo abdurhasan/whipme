@@ -4,10 +4,10 @@ import { Model } from 'mongoose';
 import { User } from './interface/user.interface';
 import { UpdateUserDto } from './dto/update-user-dto';
 import { CreateUserDto } from './dto/create-user-dto';
-import { DeleteDto } from 'src/helper/delete-dto-helper';
+import { DeleteDto } from '../helper/delete-dto-helper';
 import { AssignCarDto } from './dto/assign-car-dto';
-import { PayloadAuthDto } from 'src/auth/dto/payload-auth.dto';
-import { CarService } from 'src/car/car.service';
+import { PayloadAuthDto } from '../auth/dto/payload-auth.dto';
+import { CarService } from '../car/car.service';
 
 
 

@@ -3,9 +3,9 @@ import { BookingController } from './booking.controller';
 import { BookingService } from './booking.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { BookingSchema } from './booking.schema';
-import { BranchModule } from 'src/branch/branch.module';
-import { CarModule } from 'src/car/car.module';
-import { UserModule } from 'src/user/user.module';
+import { BranchModule } from '../branch/branch.module';
+import { CarModule } from '../car/car.module';
+import { UserModule } from '../user/user.module';
 
 @Module({
   imports: [

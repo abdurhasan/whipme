@@ -4,7 +4,7 @@ import { Model } from 'mongoose';
 import { Car } from './car.interface';
 import { CreateCarDto } from './dto/create-car.dto';
 import { UpdateCarDto } from './dto/update-car.dto';
-import { DeleteDto } from 'src/helper/delete-dto-helper';
+import { DeleteDto } from '../helper/delete-dto-helper';
 import * as IsEmpty from 'is-empty';
 
 

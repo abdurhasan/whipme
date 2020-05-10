@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Body, Patch, Param, UsePipes, ValidationPipe, Delete, Query, ParseIntPipe } from '@nestjs/common';
 import { CarService } from './car.service';
 import { CreateCarDto } from './dto/create-car.dto'
-import { IsNotEmptyPipe } from 'src/helper/pipe-helper';
+import { IsNotEmptyPipe } from '../helper/pipe-helper';
 import { UpdateCarDto } from './dto/update-car.dto';
-import { DeleteDto } from 'src/helper/delete-dto-helper';
-import { responseSuccess, responseError } from 'src/helper/response-helper';
+import { DeleteDto } from '../helper/delete-dto-helper';
+import { responseSuccess, responseError } from '../helper/response-helper';
 @Controller('car')
 export class CarController {
     constructor(private readonly carService: CarService) { }
