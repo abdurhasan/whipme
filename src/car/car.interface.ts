@@ -1,8 +1,7 @@
 export interface Car {
-    _id:string;
+    _id?:string;
     brand: string;
-    model: string;
     year: number;
-    type: string;    
-    isDelete?: boolean; 
+    model: string;    
+    type: string;        
 }

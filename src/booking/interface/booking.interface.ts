@@ -2,13 +2,14 @@ import { BookingEvent } from "../interface/booking-event.interface";
 
 
 export class Booking {
+    _id?:string;
     date: string;     // day - month - year
     branch: string;     // branchId
     invoiceNumber: string;
     carOwner: string;
     technicians: string[];
     carNumberPlate:string;
-    driver : string;
+    driver ?: string;
     events: BookingEvent[]
 }
 

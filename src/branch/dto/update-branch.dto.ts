@@ -1,5 +1,5 @@
 import { IsEmpty, IsOptional } from 'class-validator';
-import { Technician } from '../interface/branch-technicians.interface';
+
 
 
 export class UpdateBranchDto {
@@ -12,7 +12,7 @@ export class UpdateBranchDto {
     @IsOptional()
     phone: string;
     @IsOptional()
-    technicians: Technician[];
+    technicians: string[];
     @IsOptional()
     startWorkingHour: number;
     @IsOptional()

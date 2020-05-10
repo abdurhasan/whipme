@@ -1,5 +1,4 @@
 export interface UserDetail {
-    field: string;
-    type: string;
+    field: string;    
     value: string;
 }

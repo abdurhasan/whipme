@@ -1,10 +1,11 @@
-import { Technician } from "./branch-technicians.interface";
+
 
 export interface Branch {
+    _id?: string;
     name: string;
     address: string;
     phone: string;
-    technicians: Technician[];
-    startWorkingHour:number;
-    endWorkingHour:number;
+    startWorkingHour: number;
+    endWorkingHour: number;
+    technicians: string[];
 }

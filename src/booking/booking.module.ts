@@ -14,6 +14,7 @@ import { UserModule } from 'src/user/user.module';
     BranchModule,
     CarModule
   ],
+  exports: [MongooseModule],
   controllers: [BookingController],
   providers: [BookingService]
 })

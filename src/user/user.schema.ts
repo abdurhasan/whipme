@@ -1,6 +1,7 @@
 import * as mongoose from 'mongoose';
 import { AuthRole } from '../auth/auth-role.enum';
 import { encrypt } from 'src/helper/encryption-helper';
+import { User } from './interface/user.interface';
 const { Schema } = mongoose
 
 const detailSubSchema = Schema({
@@ -24,6 +25,10 @@ export const UserSchema = new Schema({
         unique: true,
         required: true
     },
+    password: {
+        type: String,
+        required: true
+    },
     userName: {
         type: String,
         unique: true,
@@ -37,10 +42,7 @@ export const UserSchema = new Schema({
         type: String,
         required: true
     },
-    password: {
-        type: String,
-        required: true
-    },
+
     role: {
         type: String,
         enum: Object.values(AuthRole),
@@ -60,7 +62,7 @@ export const UserSchema = new Schema({
 
 
 
-UserSchema.pre('save', function (next) {
+UserSchema.pre<User>('save', function (next) {
     let { password, role } = this
 
     try {

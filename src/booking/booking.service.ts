@@ -52,7 +52,7 @@ export class BookingService {
 
 
         // // 3. Generate BookingEvent : Ordered
-        const bookingEvent: BookingEvent = { status: BookingEventsEnum['0'], time: Date.now() }
+        const bookingEvent: BookingEvent = { status: BookingEventsEnum.ORDERED, time: Date.now() }
 
         // // // Insert to new booking
         // createdBooking.technicians.push(...availableTechnicians)
