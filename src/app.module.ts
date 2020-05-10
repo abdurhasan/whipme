@@ -6,7 +6,6 @@ import { APP_GUARD } from '@nestjs/core';
 import { RolesGuard } from './auth/auth.guard';
 import { CarModule } from './car/car.module';
 import { BranchModule } from './branch/branch.module';
-import { DatabaseModule } from './database/database.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import * as config from 'config';
 const dbConfig = config.get('db');

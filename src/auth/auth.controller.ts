@@ -31,7 +31,7 @@ export class AuthController {
             const registeredUser = await this.authService.register(newUser)
             return responseSuccess(registeredUser)
         } catch (error) {
-            return responseError(error.message)
+            return responseError(error)
         }
 
     }
@@ -43,7 +43,7 @@ export class AuthController {
             const signedIdUser = await this.authService.signIn(userAuth)
             return responseSuccess(signedIdUser)
         } catch (error) {
-            return responseError(error.message)
+            return responseError(error)
         }
 
 

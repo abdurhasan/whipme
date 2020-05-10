@@ -1,10 +1,10 @@
 
 import { User } from '../src/user/interface/user.interface'
-import { AuthRole } from '../auth/auth-role.enum'
-import { Booking } from '../booking/interface/booking.interface'
-import { BookingEventsEnum } from '../booking/booking-events.enum'
-import { Car } from '../car/car.interface'
-import { Branch } from '../branch/interface/branch.interface'
+import { AuthRole } from '../src/auth/enum/auth-role.enum'
+import { Booking } from '../src/booking/interface/booking.interface'
+import { BookingEventsEnum } from '../src/booking/enum/booking-events.enum'
+import { Car } from '../src/car/car.interface'
+import { Branch } from '../src/branch/interface/branch.interface'
 export const UserSeed: User[] = [
     {
         "_id": "5eb71cb14f4f88abd2cd13e2",
@@ -167,11 +167,11 @@ export const UserSeed: User[] = [
 
 export const BookingSeed: Booking[] = [
     {
-        "_id" : "5eb7643cfdb308c065fc6b0f",
+        "_id": "5eb7643cfdb308c065fc6b0f",
         "date": "04-05-2020",
         "branch": "5eadf9437b083568e9ffb778",
         "invoiceNumber": "INV5EB7643CFDB308C065FC6B0F",
-        "carOwner": "5eb0268b16fe78113ff04296",        
+        "carOwner": "5eb0268b16fe78113ff04296",
         "carNumberPlate": "X-28012Annn",
         "technicians": [
             "5eb041064151a99fe7939ede",

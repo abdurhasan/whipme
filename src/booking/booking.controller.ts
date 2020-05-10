@@ -12,7 +12,7 @@ export class BookingController {
             const bookings = await this.bookingService.getBookings();
             return responseSuccess(bookings)
         } catch (error) {
-            return responseError(error.message)
+            return responseError(error)
         }
     }
     @Post()
@@ -23,7 +23,7 @@ export class BookingController {
             return responseSuccess(createdBooking)
 
         } catch (error) {
-            return responseError(error.message)
+            return responseError(error)
         }
     }
 }

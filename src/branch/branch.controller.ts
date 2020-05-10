@@ -12,7 +12,7 @@ export class BranchController {
             const cars = await this.branchService.getBranchs();
             return responseSuccess(cars)
         } catch (error) {
-            return responseError(error.message)
+            return responseError(error)
         }
     }
     @Post()
@@ -21,7 +21,7 @@ export class BranchController {
             const createdCar = await this.branchService.createBranch(newBranch);
             return responseSuccess(createdCar)
         } catch (error) {
-            return responseError(error.message)
+            return responseError(error)
         }
     }
 
@@ -34,7 +34,7 @@ export class BranchController {
             const branchById = await this.branchService.getBranchById(id)
             return responseSuccess(branchById)
         } catch (error) {
-            return responseError(error.message)
+            return responseError(error)
         }
     }
 
@@ -47,7 +47,7 @@ export class BranchController {
             // const signedTechnician = await this.branchService.assignTechnician(signTechnician)
             // return responseSuccess(branchById)
         } catch (error) {
-            return responseError(error.message)
+            return responseError(error)
         }
     }
     // @Patch('/:id')
@@ -60,7 +60,7 @@ export class BranchController {
     //         const updatedCar = await this.branchService.updateCar(id, carUpdate)
     //         return responseSuccess(updatedCar)
     //     } catch (error) {
-    //         return responseError(error.message)
+    //         return responseError(error)
     //     }
     // }
 
@@ -71,7 +71,7 @@ export class BranchController {
     //         const deletedCar = await this.branchService.updateCar(id, softDelete);
     //         return deletedCar
     //     } catch (error) {
-    //         return responseError(error.message)
+    //         return responseError(error)
     //     }
 
     // }

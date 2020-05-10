@@ -45,7 +45,7 @@ export class UserController {
             const assigningCar = await this.userService.assignCar(currentUser, userCarOwned)
             return responseSuccess(assigningCar)
         } catch (error) {
-            return responseError(error.message)
+            return responseError(error)
         }
 
     }
@@ -58,7 +58,7 @@ export class UserController {
             const userById = await this.userService.getUserById(userId)
             return responseSuccess(userById)
         } catch (error) {
-            return responseError(error.message)
+            return responseError(error)
         }
     }
 
@@ -69,7 +69,7 @@ export class UserController {
             const users = await this.userService.getUsers();
             return responseSuccess(users)
         } catch (error) {
-            return responseError(error.message)
+            return responseError(error)
         }
     }
 
@@ -82,7 +82,7 @@ export class UserController {
             const updatedUser = await this.userService.updateUser(userId, userUpdate)
             return responseSuccess(updatedUser)
         } catch (error) {
-            return responseError(error.message)
+            return responseError(error)
         }
 
     }
@@ -95,7 +95,7 @@ export class UserController {
             const deletedUser = await this.userService.updateUser(userId, softDelete);
             return responseSuccess(deletedUser)
         } catch (error) {
-            return responseError(error.message)
+            return responseError(error)
         }
 
     }
