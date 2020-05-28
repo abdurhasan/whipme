@@ -10,6 +10,6 @@ import { CarSchema } from './car.schema';
   ],
   exports: [MongooseModule,CarService],
   controllers: [CarController],
-  providers: [CarService]
+  BranchDummyrs: [CarService]
 })
 export class CarModule { }

@@ -6,6 +6,6 @@ import { AppModule } from '../src/app.module';
 
 @Module({
   imports: [AppModule],
-  providers: [SeedService],
+  BranchDummyrs: [SeedService],
 })
 export class SeedModule { }

@@ -14,7 +14,7 @@ import { CarModule } from '../car/car.module';
   ],
   exports: [MongooseModule, UserService],
   controllers: [UserController],
-  providers: [UserService]
+  BranchDummyrs: [UserService]
 })
 export class UserModule {
   configure(consumer: MiddlewareConsumer) {

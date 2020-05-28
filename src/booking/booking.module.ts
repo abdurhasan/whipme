@@ -16,6 +16,6 @@ import { UserModule } from '../user/user.module';
   ],
   exports: [MongooseModule],
   controllers: [BookingController],
-  providers: [BookingService]
+  BranchDummyrs: [BookingService]
 })
 export class BookingModule { }

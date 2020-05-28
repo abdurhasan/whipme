@@ -5,7 +5,7 @@ import { Branch } from 'src/branch/interface/branch.interface';
 import { Car } from 'src/car/car.interface';
 import { User } from 'src/user/interface/user.interface';
 import { Model } from 'mongoose';
-import { UserSeed, BookingSeed, BranchSeed, CarSeed } from './dummy'
+import { UserDummy, BookingDummy, BranchDummy, CarDummy } from './dummy'
 
 
 
@@ -20,12 +20,12 @@ export class SeedService {
   ) { }
 
   async remove() {
-    const userSeeding = await this.userModel.remove()
-    const bookingSeeding = await this.bookingModel.remove()
-    const branchSeeding = await this.branchModel.remove()
-    const carSeeding = await this.carModel.remove()
+    const UserDummying = await this.userModel.remove()
+    const BookingDummying = await this.bookingModel.remove()
+    const BranchDummying = await this.branchModel.remove()
+    const CarDummying = await this.carModel.remove()
 
-    return Promise.all([userSeeding, bookingSeeding, branchSeeding, carSeeding])
+    return Promise.all([UserDummying, BookingDummying, BranchDummying, CarDummying])
       .then(completed => {
         Promise.resolve(completed);
       })
@@ -38,15 +38,15 @@ export class SeedService {
 
     await this.remove()
 
-    const userSeeding = await this.userModel.insertMany(UserSeed)
-    const carSeeding = await this.carModel.insertMany(CarSeed)
-    const branchSeeding = await this.branchModel.insertMany(BranchSeed)
-    const bookingSeeding = await this.bookingModel.insertMany(BookingSeed)
+    const UserDummying = await this.userModel.insertMany(UserDummy)
+    const CarDummying = await this.carModel.insertMany(CarDummy)
+    const BranchDummying = await this.branchModel.insertMany(BranchDummy)
+    const BookingDummying = await this.bookingModel.insertMany(BookingDummy)
     
 
 
-    return Promise.all([userSeeding, bookingSeeding, branchSeeding, carSeeding])
-    // return Promise.all([branchSeeding])
+    return Promise.all([UserDummying, BookingDummying, BranchDummying, CarDummying])
+    // return Promise.all([BranchDummying])
       .then(completed => {
         Promise.resolve(completed);
       })
