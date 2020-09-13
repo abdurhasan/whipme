@@ -10,6 +10,6 @@ import { AuthService } from './auth.service';
         UserModule
     ],
     controllers: [AuthController],
-    BranchDummyrs: [AuthService]
+    providers: [AuthService]
 })
 export class AuthModule { }

@@ -18,7 +18,6 @@ const dbConfig = config.get('db');
     BookingModule,
     CarModule,
     BranchModule,
-    
   ],
   controllers: [],
   exports: [
@@ -29,8 +28,8 @@ const dbConfig = config.get('db');
     CarModule,
     BranchModule,
   ],
-  BranchDummyrs: [
-    { BranchDummy: APP_GUARD, useClass: RolesGuard }
+  providers: [
+    { provide: APP_GUARD, useClass: RolesGuard }
   ],
 })
 export class AppModule { }

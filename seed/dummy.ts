@@ -5,7 +5,7 @@ import { Booking } from '../src/booking/interface/booking.interface'
 import { BookingEventsEnum } from '../src/booking/enum/booking-events.enum'
 import { Car } from '../src/car/car.interface'
 import { Branch } from '../src/branch/interface/branch.interface'
-export const UserDummy: User[] = [
+export const UserSeed: User[] = [
     {
         "_id": "5eb71cb14f4f88abd2cd13e2",
         "userName": "admin",
@@ -165,7 +165,7 @@ export const UserDummy: User[] = [
 ]
 
 
-export const BookingDummy: Booking[] = [
+export const BookingSeed: Booking[] = [
     {
         "_id": "5eb7643cfdb308c065fc6b0f",
         "date": "04-05-2020",
@@ -188,7 +188,7 @@ export const BookingDummy: Booking[] = [
 
 ]
 
-export const CarDummy: Car[] = [
+export const CarSeed: Car[] = [
     {
         "_id": "5eac558ae7179a42f172d389",
         "brand": "Acura",
@@ -235,7 +235,7 @@ export const CarDummy: Car[] = [
     }
 ]
 
-export const BranchDummy: Branch[] = [
+export const BranchSeed: Branch[] = [
     {
         "_id": "5eadf9437b083568e9ffb778",
         "name": "BMW Malaysia Sdn. Bhd",
